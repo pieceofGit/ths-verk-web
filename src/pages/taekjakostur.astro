@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
-import { equipment } from '../data/site';
+import { reader, resolveImg } from '../lib/content';
+import { eyebrows, equipmentTabs } from '../data/site';
+
+const equipment = await reader.singletons.equipment.read();
+if (!equipment) throw new Error('Vantar efni fyrir "Tækjakostur" (src/content/equipment)');
+const bukollur = equipment.bukollur;
 
 const placeholderTile =
   "height:220px;background:#20242a;display:flex;align-items:center;justify-content:center;font:700 12px 'Space Mono',monospace;color:#565d66;letter-spacing:.1em;background-image:repeating-linear-gradient(45deg,rgba(55,120,194,.08) 0 2px,transparent 2px 20px)";
@@ -9,16 +14,16 @@ const placeholderTile =
 <Base title="Tækjakostur — Þ.S. Verktakar ehf.">
   <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
     <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
-      {equipment.eyebrow}
+      {eyebrows.equipment}
     </div>
     <h1 data-reveal style="margin:0 0 32px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
-      {equipment.title}
+      Búnaður fyrir hvert verk
     </h1>
 
     <!-- tab bar -->
     <div data-reveal style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px">
       {
-        equipment.tabs.map((t) => (
+        equipmentTabs.map((t) => (
           <button
             data-taeki={t.key}
             style="font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;border:1px solid rgba(238,241,244,.2);background:transparent;color:#eef1f4;border-radius:3px;cursor:pointer"
@@ -39,15 +44,15 @@ const placeholderTile =
               data-reveal
               style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden"
             >
-              {g.placeholder ? (
-                <div style={placeholderTile}>[ mynd af gröfu ]</div>
+              {g.image ? (
+                <div style={`height:220px;background:url('${resolveImg(g.image)}') center/cover no-repeat`} />
               ) : (
-                <div style={`height:220px;background:url('${g.image}') center/cover no-repeat`} />
+                <div style={placeholderTile}>[ mynd af gröfu ]</div>
               )}
               <div style="padding:22px">
                 <div style="font:800 22px 'Archivo',sans-serif">{g.title}</div>
                 <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{g.sub}</div>
-                {g.stats && (
+                {g.stats && g.stats.length > 0 && (
                   <div style="display:flex;gap:24px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(238,241,244,.1)">
                     {g.stats.map((st) => (
                       <div>
@@ -70,7 +75,7 @@ const placeholderTile =
         {
           equipment.vorubilar.map((v) => (
             <div data-reveal style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden">
-              <div style={`height:280px;background:url('${v.image}') center/cover no-repeat`} />
+              <div style={`height:280px;background:url('${resolveImg(v.image)}') center/cover no-repeat`} />
               <div style="padding:24px">
                 <div style="font:800 24px 'Archivo',sans-serif">{v.title}</div>
                 <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{v.sub}</div>
@@ -85,22 +90,18 @@ const placeholderTile =
     <div data-taeki-panel="bukollur" style="display:none">
       <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px">
         <div data-reveal style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden">
-          <div style={`height:340px;background:url('${equipment.bukollur.image}') center/cover no-repeat`}></div>
+          <div style={`height:340px;background:url('${resolveImg(bukollur.image)}') center/cover no-repeat`}></div>
           <div style="padding:24px">
-            <div style="font:800 24px 'Archivo',sans-serif">{equipment.bukollur.title}</div>
-            <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">
-              {equipment.bukollur.sub}
-            </div>
+            <div style="font:800 24px 'Archivo',sans-serif">{bukollur.title}</div>
+            <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{bukollur.sub}</div>
           </div>
         </div>
         <div
           data-reveal
           style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:32px"
         >
-          <div style="font:900 52px 'Archivo',sans-serif;color:#3778c2">{equipment.bukollur.stat}</div>
-          <div style="font:400 16px/1.6 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:8px">
-            {equipment.bukollur.statBody}
-          </div>
+          <div style="font:900 52px 'Archivo',sans-serif;color:#3778c2">{bukollur.stat}</div>
+          <div style="font:400 16px/1.6 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:8px">{bukollur.statBody}</div>
         </div>
       </div>
     </div>

@@ -1,0 +1,31 @@
+{
+  "grofur": [
+    {
+      "image": "4b50cc_62ed434a3a4f47e6bf861a456da330de~mv2.jpg.avif",
+      "title": "Komatsu PC240LC",
+      "sub": "Beltagrafa með GPS-stýringu (Trimble)",
+      "stats": [
+        { "value": "~24 t", "label": "Þyngd" },
+        { "value": "GPS", "label": "Stýring" }
+      ]
+    },
+    { "image": null, "title": "Smágrafa", "sub": "Fyrir þrengri verk og lóðir. [uppfæra]", "stats": [] },
+    { "image": null, "title": "Hjólagrafa", "sub": "Lipur á milli verkstaða. [uppfæra]", "stats": [] }
+  ],
+  "vorubilar": [
+    { "image": "4b50cc_342ce06b69654816938d009a7839d524~mv2.jpg.avif", "title": "Mercedes-Benz Arocs", "sub": "Öflugur vörubíll með lágvagn fyrir tækjaflutninga." },
+    { "image": "854F2E74-2F95-46FA-8337-F366C357DE63_1_105_c.jpeg", "title": "Scania", "sub": "Malar- og efnisflutningar um allt Austurland." }
+  ],
+  "bukollur": {
+    "image": "4b50cc_36d64be263534334962aba91a1b72a54~mv2_d_1818_1228_s_2.jpg.avif",
+    "title": "Búkollur (liðléttingar)",
+    "sub": "Fyrir efnisflutninga á vegleysum og krefjandi verkstöðum þar sem venjulegir vörubílar komast ekki.",
+    "stat": "6×6",
+    "statBody": "Drif á öllum hjólum — kemst þangað sem verkið er. [fjöldi / gerðir uppfærist]"
+  },
+  "onnur": [
+    { "title": "Valtar", "sub": "Þjöppun á fyllingum og undirlagi. [uppfæra]" },
+    { "title": "Jarðýtur", "sub": "Mótun lands og ýting. [uppfæra]" },
+    { "title": "Krani", "sub": "Hífingar og uppsetning búnaðar. [uppfæra]" }
+  ]
+}

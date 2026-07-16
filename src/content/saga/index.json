@@ -1,0 +1,11 @@
+{
+  "title": "Frá 1978 til dagsins í dag",
+  "intro": "Það sem byrjaði með einum vörubíl er í dag öflugt verktakafyrirtæki með fjölbreyttan tækjakost.",
+  "image": "4b50cc_c37af423961f40e6a2d1727d62f5495a~mv2.png",
+  "timeline": [
+    { "year": "1978", "title": "Fyrirtækið stofnað", "body": "Rekstur hefst á Egilsstöðum með flutninga og jarðvinnu í heimabyggð. [Nákvæmar dagsetningar má uppfæra]" },
+    { "year": "1990s", "title": "Vöxtur og uppbygging", "body": "Tækjakostur stækkar og fyrirtækið tekur að sér stærri jarðvinnuverkefni um allt Austurland." },
+    { "year": "2010s", "title": "Nútímavæðing", "body": "Fjárfest í nýjum tækjum með GPS-stýringu og aukin áhersla á flutninga og hífingar." },
+    { "year": "Í dag", "title": "Áfram í fararbroddi", "body": "Sama fjölskyldan, sama áherslan á traust vinnubrögð — með öflugasta tækjakost fyrirtækisins til þessa." }
+  ]
+}

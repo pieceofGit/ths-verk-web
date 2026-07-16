@@ -1,5 +1,10 @@
 ---
-import { site, closingCta, contactHref } from '../data/site';
+import { reader, telHref } from '../lib/content';
+import { contactHref } from '../data/site';
+
+const cta = await reader.singletons.closingCta.read();
+const settings = await reader.singletons.settings.read();
+const phone = settings?.phone ?? '';
 ---
 
 <div data-reveal style="background:#3778c2;color:#fff">
@@ -9,11 +14,11 @@ import { site, closingCta, contactHref } from '../data/site';
   >
     <div>
       <div style="font:700 13px 'Space Mono',monospace;letter-spacing:.24em;color:#cfe0f4;margin-bottom:12px">
-        {closingCta.eyebrow}
+        {cta?.eyebrow}
       </div>
-      <div style="font:900 clamp(32px,5vw,52px)/1 'Archivo',sans-serif">{closingCta.heading}</div>
+      <div style="font:900 clamp(32px,5vw,52px)/1 'Archivo',sans-serif">{cta?.heading}</div>
       <div style="font:500 17px 'Barlow Condensed',sans-serif;letter-spacing:.08em;margin-top:12px;text-transform:uppercase;color:#dbe8f6">
-        {closingCta.sub}
+        {cta?.sub}
       </div>
     </div>
     <div style="display:flex;gap:14px;flex-wrap:wrap">
@@ -24,7 +29,7 @@ import { site, closingCta, contactHref } from '../data/site';
         Fáðu tilboð →
       </a>
       <a
-        href={site.phoneHref}
+        href={telHref(phone)}
         style="background:rgba(255,255,255,.16);color:#fff;font:800 18px 'Archivo',sans-serif;padding:17px 30px;border-radius:3px"
       >
         Hringja

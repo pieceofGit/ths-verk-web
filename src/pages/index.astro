@@ -1,30 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
-import { home } from '../data/site';
-const { hero, services, intro, teasers } = home;
+import { reader, resolveImg } from '../lib/content';
+import { heroImagePosition, heroScrollHint, teaserNote, teaserHrefs } from '../data/site';
+
+const home = await reader.singletons.home.read();
+if (!home) throw new Error('Vantar efni fyrir forsíðu (src/content/home)');
+const heroImage = resolveImg(home.heroImage);
+const introImage = resolveImg(home.introImage);
 ---
 
 <Base title="Þ.S. Verktakar ehf. — Jarðvinna, flutningar og hífingar">
   <!-- hero -->
   <div style="position:relative;height:100vh;min-height:660px;overflow:hidden">
     <div
-      style={`position:absolute;inset:0;background:url('${hero.image}') ${hero.imagePosition}/cover no-repeat;animation:kb 26s ease-in-out infinite alternate`}
+      style={`position:absolute;inset:0;background:url('${heroImage}') ${heroImagePosition}/cover no-repeat;animation:kb 26s ease-in-out infinite alternate`}
     >
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,22,.35) 0%,rgba(15,18,22,.1) 40%,rgba(15,18,22,.55) 100%)"></div>
     <div style="position:absolute;left:40px;right:40px;bottom:150px;max-width:1180px;margin:0 auto">
       <div style="font:700 15px 'Space Mono',monospace;color:#6fa0dc;letter-spacing:.28em;margin-bottom:18px">
-        {hero.eyebrow}
+        {home.heroEyebrow}
       </div>
       <h1 style="margin:0;font:900 clamp(56px,9vw,120px)/0.9 'Archivo',sans-serif;letter-spacing:-.015em">
-        {hero.titleTop}<br />{hero.titleBottom}<span style="color:#6fa0dc">{hero.titleAccent}</span>
+        {home.heroTitleTop}<br />{home.heroTitleBottom}<span style="color:#6fa0dc">{home.heroTitleAccent}</span>
       </h1>
       <div style="margin-top:24px;font:500 clamp(18px,2.4vw,26px) 'Barlow Condensed',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c2c8cf">
-        {hero.sub}
+        {home.heroSub}
       </div>
     </div>
     <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:700 11px 'Space Mono',monospace;letter-spacing:.24em;color:rgba(238,241,244,.6)">
-      {hero.scrollHint}
+      {heroScrollHint}
     </div>
   </div>
 
@@ -35,7 +40,7 @@ const { hero, services, intro, teasers } = home;
   >
     <div data-reveal style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
       {
-        services.map((s) => (
+        home.services.map((s) => (
           <div style="background:rgba(30,35,42,.28);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:32px 30px;box-shadow:0 24px 60px rgba(0,0,0,.5)">
             <div style="width:36px;height:3px;background:#6fa0dc;margin-bottom:20px" />
             <div style="font:800 27px 'Archivo',sans-serif">{s.title}</div>
@@ -54,11 +59,11 @@ const { hero, services, intro, teasers } = home;
     style="max-width:1180px;margin:0 auto;padding:56px 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center"
   >
     <div data-reveal>
-      <h2 style="margin:0 0 20px;font:800 40px/1.1 'Archivo',sans-serif">{intro.heading}</h2>
+      <h2 style="margin:0 0 20px;font:800 40px/1.1 'Archivo',sans-serif">{home.introHeading}</h2>
       {
-        intro.paragraphs.map((p, i) => (
+        home.introParagraphs.map((p, i) => (
           <p
-            style={`margin:0 0 ${i === intro.paragraphs.length - 1 ? '0' : '16px'};font:400 18px/1.7 'IBM Plex Sans',sans-serif;color:#b6bcc4`}
+            style={`margin:0 0 ${i === home.introParagraphs.length - 1 ? '0' : '16px'};font:400 18px/1.7 'IBM Plex Sans',sans-serif;color:#b6bcc4`}
           >
             {p}
           </p>
@@ -68,12 +73,12 @@ const { hero, services, intro, teasers } = home;
         href="/um-okkur"
         style="display:inline-block;margin-top:26px;font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #3778c2;padding-bottom:5px"
       >
-        {intro.linkLabel}
+        Lesa meira um okkur →
       </a>
     </div>
     <div
       data-reveal
-      style={`height:380px;background:url('${intro.image}') center/cover no-repeat;border-radius:4px`}
+      style={`height:380px;background:url('${introImage}') center/cover no-repeat;border-radius:4px`}
     >
     </div>
   </div>
@@ -81,14 +86,14 @@ const { hero, services, intro, teasers } = home;
   <!-- teasers -->
   <div class="wrap" style="max-width:1180px;margin:0 auto;padding:56px 40px 96px">
     <div data-reveal style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px">
-      <h2 style="margin:0;font:800 32px 'Archivo',sans-serif">{teasers.heading}</h2>
-      <span style="font:700 12px 'Space Mono',monospace;letter-spacing:.2em;color:#3778c2">{teasers.note}</span>
+      <h2 style="margin:0;font:800 32px 'Archivo',sans-serif">{home.teaserHeading}</h2>
+      <span style="font:700 12px 'Space Mono',monospace;letter-spacing:.2em;color:#3778c2">{teaserNote}</span>
     </div>
     <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px">
       {
-        teasers.items.map((t) => (
-          <a href={t.href} data-reveal style="display:block;color:inherit">
-            <div style={`height:300px;background:url('${t.image}') center/cover no-repeat;border-radius:4px`} />
+        home.teasers.map((t, i) => (
+          <a href={teaserHrefs[i] ?? '/'} data-reveal style="display:block;color:inherit">
+            <div style={`height:300px;background:url('${resolveImg(t.image)}') center/cover no-repeat;border-radius:4px`} />
             <div style="font:800 26px 'Archivo',sans-serif;margin-top:16px;color:#eef1f4">{t.label}</div>
             {t.body && (
               <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{t.body}</div>

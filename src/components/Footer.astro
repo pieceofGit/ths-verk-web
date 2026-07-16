@@ -1,5 +1,12 @@
 ---
-import { site } from '../data/site';
+import { reader, resolveImg, telHref } from '../lib/content';
+import { SITE_NAME } from '../data/site';
+
+const settings = await reader.singletons.settings.read();
+const logo = resolveImg(settings?.logo);
+const phone = settings?.phone ?? '';
+const email = settings?.email ?? '';
+const address = settings?.address ?? '';
 ---
 
 <footer style="border-top:1px solid rgba(238,241,244,.1);margin-top:40px">
@@ -7,10 +14,10 @@ import { site } from '../data/site';
     class="wrap"
     style="max-width:1180px;margin:0 auto;padding:44px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px"
   >
-    <img src={site.logo} alt={site.name} style="height:52px" />
+    <img src={logo} alt={SITE_NAME} style="height:52px" />
     <div style="font:400 15px/1.7 'IBM Plex Sans',sans-serif;color:#9aa2ab;text-align:right">
-      {site.address} · Sími <a href={site.phoneHref}>{site.phone}</a><br />
-      <a href={`mailto:${site.email}`}>{site.email}</a> · Jarðvinna | Flutningar | Hífingar
+      {address} · Sími <a href={telHref(phone)}>{phone}</a><br />
+      <a href={`mailto:${email}`}>{email}</a> · Jarðvinna | Flutningar | Hífingar
     </div>
   </div>
 </footer>

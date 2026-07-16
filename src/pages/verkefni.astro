@@ -1,15 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
-import { projects } from '../data/site';
+import { reader, resolveImg } from '../lib/content';
+import { eyebrows } from '../data/site';
+
+const projects = await reader.singletons.projects.read();
+if (!projects) throw new Error('Vantar efni fyrir "Verkefni" (src/content/projects)');
 ---
 
 <Base title="Verkefni — Þ.S. Verktakar ehf.">
   <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
     <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
-      {projects.eyebrow}
+      {eyebrows.projects}
     </div>
     <h1 data-reveal style="margin:0 0 16px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
-      {projects.title}
+      Unnin verk
     </h1>
     <p data-reveal style="margin:0 0 48px;max-width:640px;font:400 19px/1.7 'IBM Plex Sans',sans-serif;color:#b6bcc4">
       {projects.intro}
@@ -18,9 +22,7 @@ import { projects } from '../data/site';
       {
         projects.items.map((p) => (
           <div data-reveal>
-            <div
-              style={`height:340px;background:url('${p.image}') ${p.imagePosition ?? 'center'}/cover no-repeat;border-radius:4px`}
-            />
+            <div style={`height:340px;background:url('${resolveImg(p.image)}') center/cover no-repeat;border-radius:4px`} />
             <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em;margin-top:16px">
               {p.category}
             </div>

@@ -1,15 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
-import { about } from '../data/site';
+import { reader, resolveImg } from '../lib/content';
+import { eyebrows, aboutImagePosition } from '../data/site';
+
+const about = await reader.singletons.about.read();
+if (!about) throw new Error('Vantar efni fyrir "Um okkur" (src/content/about)');
+const image = resolveImg(about.image);
 ---
 
 <Base title="Um okkur — Þ.S. Verktakar ehf.">
   <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
     <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
-      {about.eyebrow}
+      {eyebrows.about}
     </div>
     <h1 data-reveal style="margin:0 0 40px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
-      {about.title[0]}<br />{about.title[1]}
+      {about.titleLine1}<br />{about.titleLine2}
     </h1>
     <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start">
       <div data-reveal>
@@ -39,7 +44,7 @@ import { about } from '../data/site';
     </div>
     <div
       data-reveal
-      style={`height:460px;margin-top:48px;background:url('${about.image}') ${about.imagePosition}/cover no-repeat;border-radius:4px`}
+      style={`height:460px;margin-top:48px;background:url('${image}') ${aboutImagePosition}/cover no-repeat;border-radius:4px`}
     >
     </div>
   </div>

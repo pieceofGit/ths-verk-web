@@ -1,0 +1,25 @@
+{
+  "heroImage": "483523128_9912688478741079_6727020034868942669_n.jpg",
+  "heroEyebrow": "EGILSSTAÐIR · AUSTURLAND",
+  "heroTitleTop": "ÞJÓNUSTA",
+  "heroTitleBottom": "SÍÐAN ",
+  "heroTitleAccent": "1978",
+  "heroSub": "Jarðvinna · Flutningar · Hífingar",
+  "services": [
+    { "title": "Jarðvinna", "body": "Uppgröftur, fyllingar, klöppun og fullnaðarfrágangur lóða og vega af öllum stærðum." },
+    { "title": "Flutningar", "body": "Efnis- og tækjaflutningar með vörubílum og búkollum um allt Austurland." },
+    { "title": "Hífingar", "body": "Örugg hífing og tilfærsla á þungum búnaði með réttum tækjum og reyndum mönnum." }
+  ],
+  "introImage": "4b50cc_de89f30bc63442aa8baef8ada13504f9~mv2.jpg.avif",
+  "introHeading": "Traustir verktakar í meira en 45 ár",
+  "introParagraphs": [
+    "Þ.S. Verktakar er fjölskyldufyrirtæki með aðsetur á Egilsstöðum. Frá árinu 1978 höfum við unnið jarðvinnu, flutninga og hífingar fyrir sveitarfélög, fyrirtæki og einstaklinga á Austurlandi.",
+    "Öflugur tækjakostur, reynt starfsfólk og áhersla á að klára verkið rétt — sama hvernig viðrar."
+  ],
+  "teaserHeading": "Kynntu þér meira",
+  "teasers": [
+    { "image": "4b50cc_342ce06b69654816938d009a7839d524~mv2.jpg.avif", "label": "TÆKJAKOSTUR →", "body": "Gröfur, vörubílar, búkollur og annar búnaður." },
+    { "image": "4b50cc_c37af423961f40e6a2d1727d62f5495a~mv2.png", "label": "VERKEFNI →", "body": "" },
+    { "image": "4b50cc_36d64be263534334962aba91a1b72a54~mv2_d_1818_1228_s_2.jpg.avif", "label": "SAGA →", "body": "" }
+  ]
+}

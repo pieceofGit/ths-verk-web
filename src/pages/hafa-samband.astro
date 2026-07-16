@@ -1,6 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, contact } from '../data/site';
+import { reader, telHref, mapEmbed } from '../lib/content';
+import { eyebrows } from '../data/site';
+
+const contact = await reader.singletons.contact.read();
+const settings = await reader.singletons.settings.read();
+if (!contact || !settings) throw new Error('Vantar efni fyrir "Hafa samband"');
+
+const phone = settings.phone ?? '';
+const email = settings.email ?? '';
+const address = settings.address ?? '';
+const facebook = settings.facebook ?? '#';
 
 const labelStyle =
   "font:600 12px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9aa2ab";
@@ -11,10 +21,10 @@ const inputStyle =
 <Base title="Hafa samband — Fáðu tilboð | Þ.S. Verktakar ehf." showClosingCta={false}>
   <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
     <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
-      {contact.eyebrow}
+      {eyebrows.contact}
     </div>
     <h1 data-reveal style="margin:0 0 40px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
-      {contact.title}
+      Fáðu tilboð
     </h1>
 
     <div class="qform" style="display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start">
@@ -73,23 +83,23 @@ const inputStyle =
 
       <!-- CONTACT -->
       <div data-reveal style="display:flex;flex-direction:column;gap:16px">
-        <a href={site.phoneHref} style="display:block;background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px;color:#eef1f4">
+        <a href={telHref(phone)} style="display:block;background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px;color:#eef1f4">
           <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">SÍMI</div>
-          <div style="font:800 26px 'Archivo',sans-serif;margin-top:6px">{site.phone}</div>
+          <div style="font:800 26px 'Archivo',sans-serif;margin-top:6px">{phone}</div>
         </a>
-        <a href={`mailto:${site.email}`} style="display:block;background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px;color:#eef1f4">
+        <a href={`mailto:${email}`} style="display:block;background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px;color:#eef1f4">
           <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">NETFANG</div>
-          <div style="font:800 22px 'Archivo',sans-serif;margin-top:6px">{site.email}</div>
+          <div style="font:800 22px 'Archivo',sans-serif;margin-top:6px">{email}</div>
         </a>
         <div style="background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px">
           <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">HEIMILISFANG</div>
-          <div style="font:800 20px 'Archivo',sans-serif;margin-top:6px">{site.address}</div>
-          <a href={site.facebook} target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font:600 15px 'IBM Plex Sans',sans-serif">
+          <div style="font:800 20px 'Archivo',sans-serif;margin-top:6px">{address}</div>
+          <a href={facebook} target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font:600 15px 'IBM Plex Sans',sans-serif">
             Facebook · /thsverk →
           </a>
         </div>
         <div data-reveal style="height:220px;border-radius:5px;overflow:hidden;border:1px solid rgba(238,241,244,.12)">
-          <iframe title="Kort" src={site.mapEmbed} style="width:100%;height:100%;border:0;filter:grayscale(.3)"></iframe>
+          <iframe title="Kort" src={mapEmbed(address)} style="width:100%;height:100%;border:0;filter:grayscale(.3)"></iframe>
         </div>
       </div>
     </div>

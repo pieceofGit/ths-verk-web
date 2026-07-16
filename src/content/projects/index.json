@@ -1,0 +1,9 @@
+{
+  "intro": "Úrval verkefna á Austurlandi — jarðvinna, vegagerð, efnisflutningar og hífingar við krefjandi aðstæður. [Bætið við raunverulegum verkefnum og myndum]",
+  "items": [
+    { "image": "4b50cc_36d64be263534334962aba91a1b72a54~mv2_d_1818_1228_s_2.jpg.avif", "category": "VEGAGERÐ", "title": "Vegir og slóðar um hálendi", "body": "Uppbygging og viðhald vega í dölum og til fjalla." },
+    { "image": "Kranavinna-vetur-1-scaled.jpg", "category": "HÍFINGAR · VETUR", "title": "Kranavinna í vetraraðstæðum", "body": "Hífingar og uppsetning búnaðar við erfið veðurskilyrði." },
+    { "image": "483523128_9912688478741079_6727020034868942669_n.jpg", "category": "JARÐVINNA · FLUTNINGAR", "title": "Uppgröftur og efnisflutningar", "body": "Grafa hleður búkollu — samhæfð jarðvinna og flutningar." },
+    { "image": "854F2E74-2F95-46FA-8337-F366C357DE63_1_105_c.jpeg", "category": "FLUTNINGAR", "title": "Efnisflutningar að vatnasvæðum", "body": "Flutningar og losun á fjölbreyttum verkstöðum." }
+  ]
+}

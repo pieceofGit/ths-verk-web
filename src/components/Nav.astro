@@ -1,5 +1,9 @@
 ---
-import { site, nav, contactHref, ctaLabel } from '../data/site';
+import { reader, resolveImg } from '../lib/content';
+import { SITE_NAME, nav, contactHref, ctaLabel } from '../data/site';
+
+const settings = await reader.singletons.settings.read();
+const logo = resolveImg(settings?.logo);
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
@@ -12,8 +16,8 @@ const linkBase =
   id="site-nav"
   style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:linear-gradient(180deg,rgba(15,18,22,.85),rgba(15,18,22,0));backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);transition:padding .28s ease,background .28s ease,box-shadow .28s ease"
 >
-  <a href="/" aria-label={site.name}>
-    <img src={site.logo} alt={site.name} style="height:48px;display:block" />
+  <a href="/" aria-label={SITE_NAME}>
+    <img src={logo} alt={SITE_NAME} style="height:48px;display:block" />
   </a>
   <div class="nav-links" style="display:flex;align-items:center;gap:30px">
     {

@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import ClosingCta from '../components/ClosingCta.astro';
 import MobileCta from '../components/MobileCta.astro';
-import { site } from '../data/site';
+import { SITE_DESCRIPTION } from '../data/site';
 
 interface Props {
   title: string;
@@ -12,11 +12,7 @@ interface Props {
   showClosingCta?: boolean;
 }
 
-const {
-  title,
-  description = 'Þ.S. Verktakar ehf. — jarðvinna, flutningar og hífingar á Austurlandi síðan 1978.',
-  showClosingCta = true,
-} = Astro.props;
+const { title, description = SITE_DESCRIPTION, showClosingCta = true } = Astro.props;
 ---
 
 <!doctype html>

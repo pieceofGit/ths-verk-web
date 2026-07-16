@@ -1,12 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
-import { saga } from '../data/site';
+import { reader, resolveImg } from '../lib/content';
+import { eyebrows } from '../data/site';
+
+const saga = await reader.singletons.saga.read();
+if (!saga) throw new Error('Vantar efni fyrir "Saga" (src/content/saga)');
+const image = resolveImg(saga.image);
 ---
 
 <Base title="Saga — Þ.S. Verktakar ehf.">
   <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
     <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
-      {saga.eyebrow}
+      {eyebrows.saga}
     </div>
     <h1 data-reveal style="margin:0 0 16px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
       {saga.title}
@@ -16,7 +21,7 @@ import { saga } from '../data/site';
     </p>
     <div
       data-reveal
-      style={`height:440px;margin-bottom:56px;background:url('${saga.image}') center/cover no-repeat;border-radius:4px;filter:saturate(.9)`}
+      style={`height:440px;margin-bottom:56px;background:url('${image}') center/cover no-repeat;border-radius:4px;filter:saturate(.9)`}
     >
     </div>
     <div style="display:flex;flex-direction:column">
