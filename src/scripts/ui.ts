@@ -120,8 +120,10 @@ function initQuoteForm() {
     const body =
       'Nafn: ' + nafn + '\nSími: ' + simi + '\nNetfang: ' + net +
       '\nTegund verks: ' + teg + '\nStaðsetning: ' + stad + '\n\nLýsing:\n' + lys;
+    // recipient comes from CMS settings via the button's data attribute
+    const email = btn.dataset.quoteEmail || 'ths@thsverk.is';
     const url =
-      'mailto:ths@thsverk.is?subject=' +
+      'mailto:' + email + '?subject=' +
       encodeURIComponent('Fyrirspurn um tilboð – ' + nafn) +
       '&body=' + encodeURIComponent(body);
     if (status) {
