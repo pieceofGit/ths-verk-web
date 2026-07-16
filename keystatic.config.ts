@@ -222,7 +222,7 @@ export default config({
       schema: {
         grofur: fields.array(
           fields.object({
-            image: image('Mynd', 'EF TÓMT: birtist gráraður „[ mynd af gröfu ]“ reitur í staðinn.'),
+            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
             title: fields.text({ label: 'Titill' }),
             sub: fields.text({ label: 'Lýsing', multiline: true }),
             stats: fields.array(
@@ -242,9 +242,9 @@ export default config({
         ),
         vorubilar: fields.array(
           fields.object({
-            image: image('Mynd'),
+            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
             title: fields.text({ label: 'Titill' }),
-            sub: fields.text({ label: 'Lýsing', multiline: true }),
+            sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
           {
             label: 'Flipi: Vörubílar',
@@ -252,27 +252,27 @@ export default config({
             itemLabel: (p) => p.fields.title.value || 'Vörubíll',
           }
         ),
-        bukollur: fields.object(
-          {
-            image: image('Mynd'),
+        bukollur: fields.array(
+          fields.object({
+            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
             title: fields.text({ label: 'Titill' }),
-            sub: fields.text({ label: 'Lýsing', multiline: true }),
-            stat: fields.text({ label: 'Áherslutala (t.d. „6×6“)', defaultValue: '6×6' }),
-            statBody: fields.text({ label: 'Skýring við töluna', multiline: true }),
-          },
+            sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
+          }),
           {
             label: 'Flipi: Búkollur',
             description: 'Sést þegar smellt er á „Búkollur“ flipann á Tækjakostur-síðunni.',
+            itemLabel: (p) => p.fields.title.value || 'Búkolla',
           }
         ),
         onnur: fields.array(
           fields.object({
+            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
             title: fields.text({ label: 'Titill' }),
-            sub: fields.text({ label: 'Lýsing', multiline: true }),
+            sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
           {
             label: 'Flipi: Önnur tæki',
-            description: 'Textakort (án mynda) — sjást þegar smellt er á „Önnur tæki“ flipann.',
+            description: 'Sést þegar smellt er á „Önnur tæki“ flipann á Tækjakostur-síðunni.',
             itemLabel: (p) => p.fields.title.value || 'Tæki',
           }
         ),

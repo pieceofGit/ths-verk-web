@@ -1,31 +1,353 @@
 {
   "grofur": [
     {
-      "image": "4b50cc_62ed434a3a4f47e6bf861a456da330de~mv2.jpg.avif",
-      "title": "Komatsu PC240LC",
-      "sub": "Beltagrafa með GPS-stýringu (Trimble)",
-      "stats": [
-        { "value": "~24 t", "label": "Þyngd" },
-        { "value": "GPS", "label": "Stýring" }
-      ]
+      "image": "taeki-volvo-hjolaskofla-l150h.jpg",
+      "title": "Volvo Hjólaskófla L150H",
+      "sub": "",
+      "stats": []
     },
-    { "image": null, "title": "Smágrafa", "sub": "Fyrir þrengri verk og lóðir. [uppfæra]", "stats": [] },
-    { "image": null, "title": "Hjólagrafa", "sub": "Lipur á milli verkstaða. [uppfæra]", "stats": [] }
+    {
+      "image": "taeki-volvo-hjolaskofla-l50h.jpg",
+      "title": "Volvo Hjólaskófla L50H",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-komatsu-wa320-pz-6.jpg",
+      "title": "Komatsu WA320 PZ 6",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-volvo-l150e.jpg",
+      "title": "Volvo L150E",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-jcb-4cx-cm-aec.jpg",
+      "title": "JCB 4CX CM AEC",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-cat-m-313.jpg",
+      "title": "CAT M 313",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-komatsu-pc-240-lc-11.jpg",
+      "title": "Komatsu PC 240 LC 11",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": null,
+      "title": "CAT 323",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-komatsu-pc-240-lc11.jpg",
+      "title": "Komatsu PC 240 LC11",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-jcb-90z-1.jpg",
+      "title": "JCB 90Z-1",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-komatsu-pc215-hybrid.jpg",
+      "title": "Komatsu PC215 Hybrid",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-cat-352-f.jpg",
+      "title": "CAT 352 F",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-cat-336-fl.jpg",
+      "title": "CAT 336 FL",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-cat-324-el.jpg",
+      "title": "CAT 324 EL",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-cat-323-el.jpg",
+      "title": "CAT 323 EL",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-komatsu-pc-240-lc-11-v2.jpg",
+      "title": "Komatsu PC 240 LC-11",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-jcb-8025.jpg",
+      "title": "JCB 8025",
+      "sub": "",
+      "stats": []
+    },
+    {
+      "image": "taeki-jcb-8020.jpg",
+      "title": "JCB 8020",
+      "sub": "",
+      "stats": []
+    }
   ],
   "vorubilar": [
-    { "image": "4b50cc_342ce06b69654816938d009a7839d524~mv2.jpg.avif", "title": "Mercedes-Benz Arocs", "sub": "Öflugur vörubíll með lágvagn fyrir tækjaflutninga." },
-    { "image": "854F2E74-2F95-46FA-8337-F366C357DE63_1_105_c.jpeg", "title": "Scania", "sub": "Malar- og efnisflutningar um allt Austurland." }
+    {
+      "image": "taeki-drattarbill-mercedes-benz-actros.jpg",
+      "title": "Dráttarbíll - Mercedes Benz Actros",
+      "sub": ""
+    },
+    {
+      "image": "taeki-4-oxla-vorubill-scania-g500.jpg",
+      "title": "4 Öxla Vörubíll - Scania G500",
+      "sub": ""
+    },
+    {
+      "image": "taeki-drattarbill-scania.jpg",
+      "title": "Dráttarbíll - Scania",
+      "sub": ""
+    },
+    {
+      "image": "taeki-drattarbill-scania-r-730.jpg",
+      "title": "Dráttarbíll - Scania R-730",
+      "sub": ""
+    },
+    {
+      "image": "taeki-drattarbill-man-tgs.jpg",
+      "title": "Dráttarbíll - Man TGS",
+      "sub": ""
+    },
+    {
+      "image": "taeki-kranabill-mercedes-benz-2636-6x6.jpg",
+      "title": "Kranabíll - Mercedes Benz 2636 6x6",
+      "sub": ""
+    },
+    {
+      "image": "taeki-4-oxla-vorubill-scania-g450b.jpg",
+      "title": "4 Öxla Vörubíll - Scania G450B",
+      "sub": ""
+    },
+    {
+      "image": "taeki-velaflutningabill-scania.jpg",
+      "title": "VÉLAFLUTNINGABÍLL - SCANIA",
+      "sub": ""
+    },
+    {
+      "image": null,
+      "title": "Dráttarbíll - Scania R-520",
+      "sub": ""
+    },
+    {
+      "image": "taeki-drattarbill-volvo-fmfh.jpg",
+      "title": "Dráttarbíll - Volvo FMFH",
+      "sub": ""
+    },
+    {
+      "image": "taeki-drattarbill-man-82s.jpg",
+      "title": "Dráttarbíll - MAN 82S",
+      "sub": ""
+    },
+    {
+      "image": "taeki-4-oxla-vorubill-scania-g450.jpg",
+      "title": "4 Öxla Vörubíll - Scania G450",
+      "sub": ""
+    },
+    {
+      "image": "taeki-4-oxla-vorubill-man-tgs-41-480.jpg",
+      "title": "4 Öxla Vörubíll - Man TGS 41.480",
+      "sub": ""
+    },
+    {
+      "image": "taeki-volvo-fh12.jpg",
+      "title": "Volvo FH12",
+      "sub": ""
+    },
+    {
+      "image": "taeki-kranabill-mercedes-benz-actros.jpg",
+      "title": "Kranabíll - Mercedes Benz Actros",
+      "sub": ""
+    }
   ],
-  "bukollur": {
-    "image": "4b50cc_36d64be263534334962aba91a1b72a54~mv2_d_1818_1228_s_2.jpg.avif",
-    "title": "Búkollur (liðléttingar)",
-    "sub": "Fyrir efnisflutninga á vegleysum og krefjandi verkstöðum þar sem venjulegir vörubílar komast ekki.",
-    "stat": "6×6",
-    "statBody": "Drif á öllum hjólum — kemst þangað sem verkið er. [fjöldi / gerðir uppfærist]"
-  },
+  "bukollur": [
+    {
+      "image": "taeki-komatsu-hm400.jpg",
+      "title": "Komatsu HM400",
+      "sub": ""
+    },
+    {
+      "image": "taeki-volvo-a30d.jpg",
+      "title": "VOLVO A30D",
+      "sub": ""
+    },
+    {
+      "image": "taeki-komatsu-hm350-2.jpg",
+      "title": "KOMATSU HM350-2",
+      "sub": ""
+    },
+    {
+      "image": "taeki-caterpillar-735-b.jpg",
+      "title": "CATERPILLAR 735 B",
+      "sub": ""
+    }
+  ],
   "onnur": [
-    { "title": "Valtar", "sub": "Þjöppun á fyllingum og undirlagi. [uppfæra]" },
-    { "title": "Jarðýtur", "sub": "Mótun lands og ýting. [uppfæra]" },
-    { "title": "Krani", "sub": "Hífingar og uppsetning búnaðar. [uppfæra]" }
+    {
+      "image": "taeki-flatvagn-langendorf.jpg",
+      "title": "Flatvagn - Langendorf",
+      "sub": ""
+    },
+    {
+      "image": "taeki-einingavagn-langendorf-sbh.jpg",
+      "title": "Einingavagn - Langendorf SBH",
+      "sub": ""
+    },
+    {
+      "image": "taeki-gamagrind-ozgul.jpg",
+      "title": "Gámagrind - Ozgul",
+      "sub": ""
+    },
+    {
+      "image": "taeki-velavagn-langendorf-satu.jpg",
+      "title": "Vélavagn - Langendorf Satu",
+      "sub": ""
+    },
+    {
+      "image": "taeki-malarvagnar.jpg",
+      "title": "Malarvagnar",
+      "sub": ""
+    },
+    {
+      "image": "taeki-vatnstankur.jpg",
+      "title": "Vatnstankur",
+      "sub": ""
+    },
+    {
+      "image": "taeki-vss-velavagn.jpg",
+      "title": "VSS VÉLAVAGN",
+      "sub": ""
+    },
+    {
+      "image": "taeki-k-ssbohrer-lowbed.jpg",
+      "title": "KÄSSBOHRER LOWBED",
+      "sub": ""
+    },
+    {
+      "image": null,
+      "title": "Liebherr PR726",
+      "sub": ""
+    },
+    {
+      "image": "taeki-cat-d6n-lgp.jpg",
+      "title": "CAT D6N LGP",
+      "sub": ""
+    },
+    {
+      "image": "taeki-komatzu-d-61-px-15.jpg",
+      "title": "Komatzu D 61 PX 15",
+      "sub": ""
+    },
+    {
+      "image": "taeki-cat-160m3-veghefill.jpg",
+      "title": "Cat 160M3 Veghefill",
+      "sub": ""
+    },
+    {
+      "image": "taeki-bomaq-bw-213-dh.jpg",
+      "title": "Bomaq BW 213 DH",
+      "sub": ""
+    },
+    {
+      "image": "taeki-amman-av26-2.jpg",
+      "title": "Amman AV26-2",
+      "sub": ""
+    },
+    {
+      "image": "taeki-leeboy-635b.jpg",
+      "title": "Leeboy 635B",
+      "sub": ""
+    },
+    {
+      "image": "taeki-mercedes-benz-sprinter-4x4.jpg",
+      "title": "Mercedes Benz - Sprinter 4x4",
+      "sub": ""
+    },
+    {
+      "image": "taeki-mercedes-benz-814da-4wd.jpg",
+      "title": "MERCEDES BENZ 814DA 4WD",
+      "sub": ""
+    },
+    {
+      "image": "taeki-mercedes-benz-711d.jpg",
+      "title": "MERCEDES BENZ 711D",
+      "sub": ""
+    },
+    {
+      "image": "taeki-toyota-hilux.jpg",
+      "title": "TOYOTA HILUX",
+      "sub": ""
+    },
+    {
+      "image": "taeki-toyota-hiace.jpg",
+      "title": "TOYOTA HIACE",
+      "sub": ""
+    },
+    {
+      "image": "taeki-izuzu-d-max.jpg",
+      "title": "IZUZU D-MAX",
+      "sub": ""
+    },
+    {
+      "image": "taeki-can-am-650-sexhjol.jpg",
+      "title": "CAN-AM 650 Sexhjól",
+      "sub": ""
+    },
+    {
+      "image": "taeki-cat-th360b.jpg",
+      "title": "CAT TH360B",
+      "sub": ""
+    },
+    {
+      "image": "taeki-avant-bobcat-a-300.jpg",
+      "title": "Avant Bobcat A 300",
+      "sub": ""
+    },
+    {
+      "image": "taeki-ausa-d-120-ahg.jpg",
+      "title": "Ausa D 120 AHG",
+      "sub": ""
+    },
+    {
+      "image": "taeki-can-am-800-bombardier.jpg",
+      "title": "CAN-AM 800 bombardier",
+      "sub": ""
+    },
+    {
+      "image": "taeki-polaris-sportsman-800.jpg",
+      "title": "POLARIS sportsman 800",
+      "sub": ""
+    },
+    {
+      "image": "taeki-fintec-f542.jpg",
+      "title": "FINTEC F542",
+      "sub": ""
+    }
   ]
 }
