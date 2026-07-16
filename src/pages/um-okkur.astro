@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { about } from '../data/site';
+---
+
+<Base title="Um okkur — Þ.S. Verktakar ehf.">
+  <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
+    <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
+      {about.eyebrow}
+    </div>
+    <h1 data-reveal style="margin:0 0 40px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
+      {about.title[0]}<br />{about.title[1]}
+    </h1>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start">
+      <div data-reveal>
+        {
+          about.paragraphs.map((p, i) => (
+            <p
+              style={`margin:0 0 ${i === about.paragraphs.length - 1 ? '0' : '18px'};font:400 19px/1.75 'IBM Plex Sans',sans-serif;color:#c2c8cf`}
+            >
+              {p}
+            </p>
+          ))
+        }
+      </div>
+      <div
+        data-reveal
+        style="display:flex;flex-direction:column;gap:1px;background:rgba(238,241,244,.1);border:1px solid rgba(238,241,244,.1)"
+      >
+        {
+          about.stats.map((s) => (
+            <div style="background:#15181c;padding:26px 28px">
+              <div style="font:900 44px 'Archivo',sans-serif;color:#3778c2">{s.value}</div>
+              <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:2px">{s.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      data-reveal
+      style={`height:460px;margin-top:48px;background:url('${about.image}') ${about.imagePosition}/cover no-repeat;border-radius:4px`}
+    >
+    </div>
+  </div>
+</Base>

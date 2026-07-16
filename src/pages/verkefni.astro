@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects } from '../data/site';
+---
+
+<Base title="Verkefni — Þ.S. Verktakar ehf.">
+  <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
+    <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
+      {projects.eyebrow}
+    </div>
+    <h1 data-reveal style="margin:0 0 16px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
+      {projects.title}
+    </h1>
+    <p data-reveal style="margin:0 0 48px;max-width:640px;font:400 19px/1.7 'IBM Plex Sans',sans-serif;color:#b6bcc4">
+      {projects.intro}
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px">
+      {
+        projects.items.map((p) => (
+          <div data-reveal>
+            <div
+              style={`height:340px;background:url('${p.image}') ${p.imagePosition ?? 'center'}/cover no-repeat;border-radius:4px`}
+            />
+            <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em;margin-top:16px">
+              {p.category}
+            </div>
+            <div style="font:800 24px 'Archivo',sans-serif;margin-top:6px">{p.title}</div>
+            <div style="font:400 16px/1.6 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:6px">{p.body}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Base>

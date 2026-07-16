@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { saga } from '../data/site';
+---
+
+<Base title="Saga — Þ.S. Verktakar ehf.">
+  <div class="wrap wrap-top" style="max-width:1180px;margin:0 auto;padding:150px 40px 40px">
+    <div data-reveal style="font:700 13px 'Space Mono',monospace;color:#3778c2;letter-spacing:.24em;margin-bottom:14px">
+      {saga.eyebrow}
+    </div>
+    <h1 data-reveal style="margin:0 0 16px;font:900 clamp(44px,7vw,88px)/0.95 'Archivo',sans-serif">
+      {saga.title}
+    </h1>
+    <p data-reveal style="margin:0 0 40px;max-width:640px;font:400 19px/1.7 'IBM Plex Sans',sans-serif;color:#b6bcc4">
+      {saga.intro}
+    </p>
+    <div
+      data-reveal
+      style={`height:440px;margin-bottom:56px;background:url('${saga.image}') center/cover no-repeat;border-radius:4px;filter:saturate(.9)`}
+    >
+    </div>
+    <div style="display:flex;flex-direction:column">
+      {
+        saga.timeline.map((row, i) => (
+          <div
+            data-reveal
+            style={`display:grid;grid-template-columns:160px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(238,241,244,.12)${i === saga.timeline.length - 1 ? ';border-bottom:1px solid rgba(238,241,244,.12)' : ''}`}
+          >
+            <div style="font:900 40px 'Archivo',sans-serif;color:#3778c2">{row.year}</div>
+            <div>
+              <div style="font:700 22px 'Archivo',sans-serif;margin-bottom:6px">{row.title}</div>
+              <div style="font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#9aa2ab">{row.body}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Base>

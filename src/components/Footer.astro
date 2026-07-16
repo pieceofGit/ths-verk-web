@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site';
+---
+
+<footer style="border-top:1px solid rgba(238,241,244,.1);margin-top:40px">
+  <div
+    class="wrap"
+    style="max-width:1180px;margin:0 auto;padding:44px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px"
+  >
+    <img src={site.logo} alt={site.name} style="height:52px" />
+    <div style="font:400 15px/1.7 'IBM Plex Sans',sans-serif;color:#9aa2ab;text-align:right">
+      {site.address} · Sími <a href={site.phoneHref}>{site.phone}</a><br />
+      <a href={`mailto:${site.email}`}>{site.email}</a> · Jarðvinna | Flutningar | Hífingar
+    </div>
+  </div>
+</footer>

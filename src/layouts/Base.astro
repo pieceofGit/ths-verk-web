@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import MobileCta from '../components/MobileCta.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  showClosingCta?: boolean;
+}
+
+const {
+  title,
+  description = 'Þ.S. Verktakar ehf. — jarðvinna, flutningar og hífingar á Austurlandi síðan 1978.',
+  showClosingCta = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow+Condensed:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="site" style="min-height:100vh">
+      <Nav />
+      <slot />
+      {showClosingCta && <ClosingCta />}
+      <MobileCta />
+      <Footer />
+    </div>
+    <script>
+      import '../scripts/ui';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+---
+import { site, nav, contactHref, ctaLabel } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+
+const linkBase =
+  "font:600 14px 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:2px solid transparent";
+---
+
+<nav
+  id="site-nav"
+  style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:linear-gradient(180deg,rgba(15,18,22,.85),rgba(15,18,22,0));backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);transition:padding .28s ease,background .28s ease,box-shadow .28s ease"
+>
+  <a href="/" aria-label={site.name}>
+    <img src={site.logo} alt={site.name} style="height:48px;display:block" />
+  </a>
+  <div class="nav-links" style="display:flex;align-items:center;gap:30px">
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          style={`${linkBase};color:${isActive(item.href) ? '#fff' : '#aeb5bd'};border-bottom-color:${isActive(item.href) ? '#3778c2' : 'transparent'}`}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href={contactHref}
+      class="nav-cta"
+      style="display:inline-block;font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;background:#3778c2;color:#fff;padding:11px 20px;border-radius:3px"
+    >
+      {ctaLabel}
+    </a>
+  </div>
+  <button class="nav-burger" data-burger aria-label="Valmynd">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
