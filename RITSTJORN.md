@@ -8,16 +8,19 @@ Vefnum er breytt í gegnum einfalt ritstjórnarkerfi — enginn kóði.
 2. Skráðu þig inn með GitHub (fyrsta skiptið biður það um aðgang).
 3. Þú sérð lista af hlutum sem má breyta:
 
-   | Hluti | Hvað þar er |
-   |---|---|
-   | **Fyrirtæki & tengiliðir** | Sími, netfang, heimilisfang, Facebook, merki (logo) |
-   | **Forsíða** | Forsíðumynd, fyrirsagnir, þjónustuflokkar, kynningartexti |
-   | **Um okkur** | Textar og tölur (1978, 45+, …), mynd |
-   | **Saga** | Tímalína (ártöl og lýsingar) |
-   | **Verkefni** | Verkefnakort — myndir, titlar, lýsingar |
-   | **Tækjakostur** | Gröfur, vörubílar, búkollur, önnur tæki |
-   | **Hafa samband** | Titill forms, tegundir verka í fellilista |
-   | **Hvatningarborði** | Blái borðinn neðst á síðunum |
+   | Hluti | Síða á vefnum | Hvað þar er |
+   |---|---|---|
+   | **Forsíða** | `<vefslóð>/` | Forsíðumynd, fyrirsagnir, þjónustukort, kynningartexti |
+   | **Um okkur** | `<vefslóð>/um-okkur` | Textar og tölur (1978, 45+, …), mynd |
+   | **Saga** | `<vefslóð>/saga` | Tímalína (ártöl og lýsingar) |
+   | **Verkefni** | `<vefslóð>/verkefni` | Verkefnakort — myndir, titlar, lýsingar |
+   | **Tækjakostur** | `<vefslóð>/taekjakostur` | 4 flipar: Gröfur, Vörubílar, Búkollur, Önnur tæki — smelltu á flipana á síðunni til að sjá efnið |
+   | **Hafa samband** | `<vefslóð>/hafa-samband` | Titill forms, tegundir verka í fellilista |
+   | **Fyrirtæki & tengiliðir** | allar síður | Sími, netfang, heimilisfang, Facebook, merki (logo) |
+   | **Blái borðinn neðst** | allar síður nema Hafa samband | „Fáðu verðmat…“ borðinn |
+
+   Gott vinnulag: hafðu vefinn opinn í öðrum flipa og endurhladdu (⌘R) til að
+   bera saman — breytingar birtast ~1 mín eftir **Save**.
 
 4. Smelltu á hlut, breyttu texta eða skiptu um mynd (**Choose file**).
 5. Ýttu **Save** efst til hægri.

@@ -29,7 +29,7 @@ export default config({
   singletons: {
     // ---------------------------------------------------------- Fyrirtæki ---
     settings: singleton({
-      label: 'Fyrirtæki & tengiliðir',
+      label: 'Fyrirtæki & tengiliðir — á öllum síðum',
       path: 'src/content/settings/',
       format: { data: 'json' },
       schema: {
@@ -58,7 +58,7 @@ export default config({
 
     // ------------------------------------------------------------ Forsíða ---
     home: singleton({
-      label: 'Forsíða',
+      label: 'Forsíða — síða: /',
       path: 'src/content/home/',
       format: { data: 'json' },
       schema: {
@@ -128,7 +128,7 @@ export default config({
 
     // ----------------------------------------------------------- Um okkur ---
     about: singleton({
-      label: 'Um okkur',
+      label: 'Um okkur — síða: /um-okkur',
       path: 'src/content/about/',
       format: { data: 'json' },
       schema: {
@@ -158,7 +158,7 @@ export default config({
 
     // -------------------------------------------------------------- Saga ---
     saga: singleton({
-      label: 'Saga',
+      label: 'Saga — síða: /saga',
       path: 'src/content/saga/',
       format: { data: 'json' },
       schema: {
@@ -189,7 +189,7 @@ export default config({
 
     // -------------------------------------------------------------- Verkefni ---
     projects: singleton({
-      label: 'Verkefni',
+      label: 'Verkefni — síða: /verkefni',
       path: 'src/content/projects/',
       format: { data: 'json' },
       schema: {
@@ -216,7 +216,7 @@ export default config({
 
     // ----------------------------------------------------------- Tækjakostur ---
     equipment: singleton({
-      label: 'Tækjakostur',
+      label: 'Tækjakostur — síða: /taekjakostur',
       path: 'src/content/equipment/',
       format: { data: 'json' },
       schema: {
@@ -281,7 +281,7 @@ export default config({
 
     // ------------------------------------------------------- Hafa samband ---
     contact: singleton({
-      label: 'Hafa samband',
+      label: 'Hafa samband — síða: /hafa-samband',
       path: 'src/content/contact/',
       format: { data: 'json' },
       schema: {
@@ -310,7 +310,7 @@ export default config({
 
     // --------------------------------------------------------- Loka-hvatning ---
     closingCta: singleton({
-      label: 'Blái borðinn neðst',
+      label: 'Blái borðinn neðst — allar síður nema Hafa samband',
       path: 'src/content/closing-cta/',
       format: { data: 'json' },
       schema: {
