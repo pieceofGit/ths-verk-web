@@ -98,11 +98,15 @@ function initEquipmentTabs() {
 }
 
 // -- Quote form -------------------------------------------------------------
+// Sends directly via Web3Forms when PUBLIC_WEB3FORMS_KEY is configured;
+// falls back to a mailto: draft when it isn't (e.g. key not set up yet).
 function initQuoteForm() {
   const btn = document.querySelector<HTMLElement>('[data-quote-submit]');
   if (!btn) return;
   const g = (id: string) => (document.getElementById(id) as HTMLInputElement | null)?.value ?? '';
-  btn.addEventListener('click', () => {
+  const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined;
+
+  btn.addEventListener('click', async () => {
     const nafn = g('q-nafn').trim();
     const simi = g('q-simi').trim();
     const net = g('q-netfang').trim();
@@ -120,7 +124,50 @@ function initQuoteForm() {
     const body =
       'Nafn: ' + nafn + '\nSími: ' + simi + '\nNetfang: ' + net +
       '\nTegund verks: ' + teg + '\nStaðsetning: ' + stad + '\n\nLýsing:\n' + lys;
-    // recipient comes from CMS settings via the button's data attribute
+
+    if (accessKey) {
+      btn.setAttribute('disabled', '');
+      btn.style.opacity = '.6';
+      if (status) {
+        status.style.color = '#9aa2ab';
+        status.textContent = 'Sendi…';
+      }
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: 'Fyrirspurn um tilboð – ' + nafn,
+            from_name: nafn,
+            replyto: net || undefined,
+            message: body,
+          }),
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message || 'send failed');
+        if (status) {
+          status.style.color = '#6fbf7a';
+          status.textContent = 'Takk! Fyrirspurnin er send — við höfum samband fljótlega.';
+        }
+        ['q-nafn', 'q-simi', 'q-netfang', 'q-stadur', 'q-lysing'].forEach((id) => {
+          const el = document.getElementById(id) as HTMLInputElement | null;
+          if (el) el.value = '';
+        });
+        return;
+      } catch {
+        if (status) {
+          status.style.color = '#e0794f';
+          status.textContent = 'Sending mistókst — reyndu aftur eða hringdu í okkur.';
+        }
+        return;
+      } finally {
+        btn.removeAttribute('disabled');
+        btn.style.opacity = '1';
+      }
+    }
+
+    // fallback: open a pre-filled draft in the visitor's mail app
     const email = btn.dataset.quoteEmail || 'ths@thsverk.is';
     const url =
       'mailto:' + email + '?subject=' +
