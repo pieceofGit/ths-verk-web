@@ -1,44 +1,49 @@
 ---
 import Base from '../layouts/Base.astro';
 import { reader, resolveImg } from '../lib/content';
-import { heroImagePosition, heroScrollHint, teaserNote, teaserHrefs } from '../data/site';
+import { heroImagePosition, heroScrollHint, teaserNote } from '../data/site';
 
 const home = await reader.singletons.home.read();
 if (!home) throw new Error('Vantar efni fyrir forsíðu (src/content/home)');
 const heroImage = resolveImg(home.heroImage);
 const introImage = resolveImg(home.introImage);
+// first teaser is the wide one; extra teasers share the rest
+const teaserCols =
+  home.teasers.length > 1 ? `1.5fr repeat(${home.teasers.length - 1},minmax(0,1fr))` : 'minmax(0,1fr)';
 ---
 
 <Base title="Þ.S. Verktakar ehf. — Jarðvinna, flutningar og hífingar">
   <!-- hero -->
-  <div style="position:relative;height:100vh;min-height:660px;overflow:hidden">
+  <div class="hero">
     <div
-      style={`position:absolute;inset:0;background:url('${heroImage}') ${heroImagePosition}/cover no-repeat;animation:kb 26s ease-in-out infinite alternate`}
+      class="hero-bg"
+      style={`position:absolute;inset:0;background:${heroImage ? `url('${heroImage}') ${heroImagePosition}/cover no-repeat` : 'var(--bg-deep)'}`}
     >
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,22,.35) 0%,rgba(15,18,22,.1) 40%,rgba(15,18,22,.55) 100%)"></div>
-    <div style="position:absolute;left:40px;right:40px;bottom:230px;max-width:1180px;margin:0 auto">
-      <div style="font:700 15px 'Space Mono',monospace;color:#6fa0dc;letter-spacing:.28em;margin-bottom:18px">
+    <div class="wrap" style="position:relative;width:100%;max-width:1180px;margin:0 auto;padding:0 40px">
+      <div class="hero-eyebrow" style="font:700 15px 'Space Mono',monospace;letter-spacing:.28em;margin-bottom:18px;overflow-wrap:anywhere">
         {home.heroEyebrow}
       </div>
-      <h1 style="margin:0;font:900 clamp(56px,9vw,120px)/0.9 'Archivo',sans-serif;letter-spacing:-.015em">
+      <h1 class="hero-title" style="margin:0;font-weight:900;font-family:'Archivo',sans-serif;line-height:.9;letter-spacing:-.015em">
         {home.heroTitleTop}<br />{home.heroTitleBottom}<span style="color:#6fa0dc">{home.heroTitleAccent}</span>
       </h1>
       <div style="margin-top:24px;font:500 clamp(18px,2.4vw,26px) 'Barlow Condensed',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c2c8cf">
         {home.heroSub}
       </div>
     </div>
-    <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:700 11px 'Space Mono',monospace;letter-spacing:.24em;color:rgba(238,241,244,.6)">
+    <div class="hero-hint" style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:700 11px 'Space Mono',monospace;letter-spacing:.24em;color:rgba(238,241,244,.6)">
       {heroScrollHint}
     </div>
   </div>
 
   <!-- services -->
+  {home.services.length > 0 && (
   <div
     class="wrap services"
     style="max-width:1180px;margin:-170px auto 0;padding:0 40px;position:relative;z-index:10"
   >
-    <div data-reveal style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
       {
         home.services.map((s) => (
           <div style="background:rgba(30,35,42,.28);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:32px 30px;box-shadow:0 24px 60px rgba(0,0,0,.5)">
@@ -52,14 +57,15 @@ const introImage = resolveImg(home.introImage);
       }
     </div>
   </div>
+  )}
 
   <!-- intro band -->
   <div
     class="wrap"
-    style="max-width:1180px;margin:0 auto;padding:56px 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center"
+    style={`max-width:1180px;margin:0 auto;padding:56px 40px 40px;display:grid;grid-template-columns:${introImage ? '1fr 1fr' : 'minmax(0,1fr)'};gap:56px;align-items:center`}
   >
     <div data-reveal>
-      <h2 style="margin:0 0 20px;font:800 40px/1.1 'Archivo',sans-serif">{home.introHeading}</h2>
+      <h2 style="margin:0 0 20px;font:800 clamp(28px,7vw,40px)/1.1 'Archivo',sans-serif">{home.introHeading}</h2>
       {
         home.introParagraphs.map((p, i) => (
           <p
@@ -76,25 +82,29 @@ const introImage = resolveImg(home.introImage);
         Lesa meira um okkur →
       </a>
     </div>
-    <div
-      data-reveal
-      style={`height:380px;background:url('${introImage}') center/cover no-repeat;border-radius:4px`}
-    >
-    </div>
+    {introImage && (
+      <div
+        data-reveal
+        style={`height:380px;background:url('${introImage}') center/cover no-repeat;border-radius:4px`}
+      />
+    )}
   </div>
 
   <!-- teasers -->
+  {home.teasers.length > 0 && (
   <div class="wrap" style="max-width:1180px;margin:0 auto;padding:56px 40px 96px">
     <div data-reveal style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px">
       <h2 style="margin:0;font:800 32px 'Archivo',sans-serif">{home.teaserHeading}</h2>
       <span style="font:700 12px 'Space Mono',monospace;letter-spacing:.2em;color:#3778c2">{teaserNote}</span>
     </div>
-    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px">
+    <div style={`display:grid;grid-template-columns:${teaserCols};gap:20px`}>
       {
-        home.teasers.map((t, i) => (
-          <a href={teaserHrefs[i] ?? '/'} data-reveal style="display:block;color:inherit">
-            <div style={`height:300px;background:url('${resolveImg(t.image)}') center/cover no-repeat;border-radius:4px`} />
-            <div style="font:800 26px 'Archivo',sans-serif;margin-top:16px;color:#eef1f4">{t.label}</div>
+        home.teasers.map((t) => (
+          <a href={t.link} data-reveal style="display:block;color:inherit">
+            {t.image && (
+              <div style={`height:300px;background:url('${resolveImg(t.image)}') center/cover no-repeat;border-radius:4px;margin-bottom:16px`} />
+            )}
+            <div style="font:800 26px 'Archivo',sans-serif;color:#eef1f4;overflow-wrap:anywhere">{t.label}</div>
             {t.body && (
               <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{t.body}</div>
             )}
@@ -103,4 +113,5 @@ const introImage = resolveImg(home.introImage);
       }
     </div>
   </div>
+  )}
 </Base>

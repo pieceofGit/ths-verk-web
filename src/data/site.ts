@@ -30,7 +30,6 @@ export const eyebrows = {
 // Home hero / teaser fixed bits
 export const heroScrollHint = '↓ SKRUNAÐU';
 export const teaserNote = '↓ MEIRA NIÐUR';
-export const teaserHrefs = ['/taekjakostur', '/verkefni', '/saga'];
 
 // Fixed image framing for full-bleed background photos
 export const heroImagePosition = 'center 34%';

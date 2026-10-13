@@ -22,11 +22,15 @@ if (!projects) throw new Error('Vantar efni fyrir "Verkefni" (src/content/projec
       {
         projects.items.map((p) => (
           <div data-reveal>
-            <div style={`height:340px;background:url('${resolveImg(p.image)}') center/cover no-repeat;border-radius:4px`} />
+            {p.image ? (
+              <div style={`height:340px;background:url('${resolveImg(p.image)}') center/cover no-repeat;border-radius:4px`} />
+            ) : (
+              <div class="img-placeholder" style="height:340px;border-radius:4px">[ mynd væntanleg ]</div>
+            )}
             <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em;margin-top:16px">
               {p.category}
             </div>
-            <div style="font:800 24px 'Archivo',sans-serif;margin-top:6px">{p.title}</div>
+            <div style="font:800 24px 'Archivo',sans-serif;margin-top:6px;overflow-wrap:anywhere">{p.title}</div>
             <div style="font:400 16px/1.6 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:6px">{p.body}</div>
           </div>
         ))

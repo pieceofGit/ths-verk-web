@@ -15,8 +15,8 @@ const address = settings?.address ?? '';
     style="max-width:1180px;margin:0 auto;padding:44px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px"
   >
     <img src={logo} alt={SITE_NAME} style="height:52px" />
-    <div style="font:400 15px/1.7 'IBM Plex Sans',sans-serif;color:#9aa2ab;text-align:right">
-      {address} · Sími <a href={telHref(phone)}>{phone}</a><br />
+    <div class="footer-text" style="font:400 15px/1.7 'IBM Plex Sans',sans-serif;color:#9aa2ab;text-align:right;overflow-wrap:anywhere">
+      {address && <>{address} · </>}Sími <a href={telHref(phone)}>{phone}</a><br />
       <a href={`mailto:${email}`}>{email}</a> · Jarðvinna | Flutningar | Hífingar
     </div>
   </div>

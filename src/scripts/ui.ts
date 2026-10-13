@@ -26,54 +26,51 @@ function initBurger() {
   const burger = document.querySelector<HTMLElement>('.nav-burger');
   const links = document.querySelector<HTMLElement>('.nav-links');
   if (!burger || !links) return;
-  burger.addEventListener('click', () => {
-    const open = links.hasAttribute('data-open');
-    if (open) {
-      links.removeAttribute('data-open');
-      burger.removeAttribute('data-open');
-    } else {
-      links.setAttribute('data-open', '');
-      burger.setAttribute('data-open', '');
+  const setOpen = (open: boolean) => {
+    links.toggleAttribute('data-open', open);
+    burger.toggleAttribute('data-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+  };
+  const isOpen = () => links.hasAttribute('data-open');
+  burger.addEventListener('click', () => setOpen(!isOpen()));
+  // close on Escape, a tap outside the nav, or picking a link
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) {
+      setOpen(false);
+      burger.focus();
     }
   });
+  document.addEventListener('click', (e) => {
+    if (isOpen() && !burger.contains(e.target as Node) && !links.contains(e.target as Node)) setOpen(false);
+  });
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 }
 
 // -- Scroll reveal ----------------------------------------------------------
 function initReveal() {
+  // Revealed state lives in CSS ([data-reveal][data-seen]) so :hover styles still win.
+  const show = (el: Element) => el.setAttribute('data-seen', '1');
   const els = document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-seen])');
   if (!('IntersectionObserver' in window)) {
-    els.forEach((el) => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+    els.forEach(show);
     return;
   }
+  // content already on screen at load shows straight away
+  els.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) show(el);
+  });
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((en) => {
         if (en.isIntersecting) {
-          const el = en.target as HTMLElement;
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-          el.setAttribute('data-seen', '1');
-          io.unobserve(el);
+          show(en.target);
+          io.unobserve(en.target);
         }
       });
     },
     { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
   );
-  els.forEach((el) => io.observe(el));
-  // safety: reveal anything already in view after a moment
-  setTimeout(() => {
-    document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-seen])').forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.setAttribute('data-seen', '1');
-      }
-    });
-  }, 700);
+  document.querySelectorAll('[data-reveal]:not([data-seen])').forEach((el) => io.observe(el));
 }
 
 // -- Equipment tabs (Tækjakostur only) -------------------------------------
@@ -85,28 +82,45 @@ function initEquipmentTabs() {
   const paint = (active: string) => {
     tabs.forEach((el) => {
       const on = el.dataset.taeki === active;
-      el.style.background = on ? '#3778c2' : 'transparent';
-      el.style.borderColor = on ? '#3778c2' : 'rgba(238,241,244,.2)';
+      el.setAttribute('aria-selected', String(on));
+      el.tabIndex = on ? 0 : -1;
     });
     panels.forEach((p) => {
-      p.style.display = p.dataset.taekiPanel === active ? 'block' : 'none';
+      p.hidden = p.dataset.taekiPanel !== active;
     });
   };
 
-  tabs.forEach((el) => el.addEventListener('click', () => paint(el.dataset.taeki!)));
-  paint('grofur');
+  const list = [...tabs];
+  list.forEach((el, i) => {
+    el.addEventListener('click', () => paint(el.dataset.taeki!));
+    el.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      const next = list[(i + step + list.length) % list.length];
+      paint(next.dataset.taeki!);
+      next.focus();
+    });
+  });
+  paint(list[0].dataset.taeki!);
 }
 
 // -- Quote form -------------------------------------------------------------
 // Sends directly via Web3Forms when PUBLIC_WEB3FORMS_KEY is configured;
 // falls back to a mailto: draft when it isn't (e.g. key not set up yet).
 function initQuoteForm() {
+  const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
   const btn = document.querySelector<HTMLElement>('[data-quote-submit]');
-  if (!btn) return;
+  if (!form || !btn) return;
   const g = (id: string) => (document.getElementById(id) as HTMLInputElement | null)?.value ?? '';
   const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined;
 
-  btn.addEventListener('click', async () => {
+  const field = (id: string) => document.getElementById(id) as HTMLInputElement | null;
+  ['q-nafn', 'q-simi', 'q-netfang'].forEach((id) =>
+    field(id)?.addEventListener('input', () => field(id)?.removeAttribute('aria-invalid'))
+  );
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
     const nafn = g('q-nafn').trim();
     const simi = g('q-simi').trim();
     const net = g('q-netfang').trim();
@@ -115,9 +129,14 @@ function initQuoteForm() {
     const lys = g('q-lysing').trim();
     const status = document.getElementById('q-status');
     if (!nafn || (!simi && !net)) {
+      const bad = [!nafn && 'q-nafn', !simi && !net && 'q-simi', !simi && !net && 'q-netfang'].filter(Boolean) as string[];
+      bad.forEach((id) => field(id)?.setAttribute('aria-invalid', 'true'));
+      field(bad[0])?.focus();
       if (status) {
         status.style.color = '#e0794f';
-        status.textContent = 'Vinsamlegast fylltu út nafn og síma eða netfang.';
+        status.textContent = !nafn
+          ? 'Vinsamlegast fylltu út nafn og síma eða netfang.'
+          : 'Vinsamlegast fylltu út síma eða netfang svo við getum svarað.';
       }
       return;
     }

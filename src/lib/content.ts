@@ -10,10 +10,21 @@ export function resolveImg(v: string | null | undefined): string {
   return v.startsWith('/') ? v : `/uploads/${v}`;
 }
 
-/** Build a tel: href from an Icelandic display phone like "471-1170". */
+/**
+ * Build a tel: href from an Icelandic display phone like "471-1170".
+ * Tolerates what an editor might type: "+354 471 1170", "00354…", or two
+ * numbers ("471-1170 / 892-3456", only the first is dialled).
+ */
 export function telHref(phone: string): string {
-  const digits = phone.replace(/[^0-9]/g, '');
+  const first = phone.split(/[\/,;]|\seða\s/)[0];
+  const digits = first.replace(/[^0-9]/g, '').replace(/^(?:00)?354(?=\d{7}$)/, '');
   return `tel:+354${digits}`;
+}
+
+/** Short label for a Facebook URL, e.g. "facebook.com/thsverk" → "/thsverk". */
+export function facebookLabel(url: string): string {
+  const path = url.replace(/^https?:\/\/(www\.)?facebook\.com/i, '').replace(/\/+$/, '');
+  return `Facebook${path ? ' · ' + path : ''} →`;
 }
 
 /** Google Maps embed URL for an address string. */

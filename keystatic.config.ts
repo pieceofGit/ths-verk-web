@@ -10,6 +10,9 @@ const githubRepo = (import.meta as any).env?.PUBLIC_KEYSTATIC_GITHUB_REPO as
 const image = (label: string, description?: string) =>
   fields.image({ label, description, directory: 'public/uploads', publicPath: '/uploads' });
 
+// Lines of the giant hero title; longer words can't fit on a phone.
+const heroLine = { length: { max: 14 } };
+
 const paragraphs = (label: string, description?: string) =>
   fields.array(fields.text({ label: 'Málsgrein', multiline: true }), {
     label,
@@ -36,7 +39,8 @@ export default config({
         logo: image('Merki (logo)', 'Birtist efst til vinstri á öllum síðum og í fæti neðst.'),
         phone: fields.text({
           label: 'Sími',
-          description: 'Birtist í fæti, á Hafa samband-síðunni og í öllum „Hringja“-hnöppum.',
+          description:
+            'Birtist í fæti, á Hafa samband-síðunni, í bláa borðanum og í öllum „Hringja“-hnöppum. Eitt númer, t.d. 471-1170.',
           defaultValue: '471-1170',
         }),
         email: fields.text({
@@ -70,18 +74,21 @@ export default config({
         }),
         heroTitleTop: fields.text({
           label: 'Stór fyrirsögn — lína 1',
-          description: 'Fyrri lína risafyrirsagnarinnar yfir myndinni („ÞJÓNUSTA“).',
+          description: 'Fyrri lína risafyrirsagnarinnar yfir myndinni („ÞJÓNUSTA“). Mest 14 stafir.',
           defaultValue: 'ÞJÓNUSTA',
+          validation: heroLine,
         }),
         heroTitleBottom: fields.text({
           label: 'Stór fyrirsögn — lína 2',
-          description: 'Seinni línan („SÍÐAN “) — blaa talan hér fyrir neðan bætist aftan við hana.',
+          description: 'Seinni línan („SÍÐAN “) — bláa talan hér fyrir neðan bætist aftan við hana. Mest 14 stafir.',
           defaultValue: 'SÍÐAN ',
+          validation: heroLine,
         }),
         heroTitleAccent: fields.text({
           label: 'Blá tala í fyrirsögn',
           description: 'Talan sem birtist í bláum lit aftast í línu 2 („1978“).',
           defaultValue: '1978',
+          validation: heroLine,
         }),
         heroSub: fields.text({
           label: 'Undirtexti',
@@ -114,12 +121,23 @@ export default config({
           fields.object({
             image: image('Mynd'),
             label: fields.text({ label: 'Merki (t.d. „TÆKJAKOSTUR →“)' }),
+            link: fields.select({
+              label: 'Vísar á síðu',
+              options: [
+                { label: 'Tækjakostur', value: '/taekjakostur' },
+                { label: 'Verkefni', value: '/verkefni' },
+                { label: 'Saga', value: '/saga' },
+                { label: 'Um okkur', value: '/um-okkur' },
+                { label: 'Hafa samband', value: '/hafa-samband' },
+              ],
+              defaultValue: '/taekjakostur',
+            }),
             body: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
           {
             label: 'Tenglareitir neðst',
             description:
-              'Þrír myndareitir neðst á forsíðunni sem vísa á undirsíður. RÖÐIN SKIPTIR MÁLI: 1 = Tækjakostur, 2 = Verkefni, 3 = Saga.',
+              'Myndareitirnir neðst á forsíðunni sem vísa á undirsíður. Veldu í hverjum reit á hvaða síðu hann vísar. Fyrsti reiturinn er breiðastur.',
             itemLabel: (p) => p.fields.label.value || 'Reitur',
           }
         ),
@@ -143,7 +161,11 @@ export default config({
         paragraphs: paragraphs('Málsgreinar', 'Meginmálið vinstra megin á síðunni.'),
         stats: fields.array(
           fields.object({
-            value: fields.text({ label: 'Tala / gildi' }),
+            value: fields.text({
+              label: 'Tala / gildi',
+              description: 'Stutt — mest 12 stafir (t.d. „1978“, „45+“, „Austurland“).',
+              validation: { length: { max: 12 } },
+            }),
             label: fields.text({ label: 'Skýring' }),
           }),
           {
@@ -326,7 +348,7 @@ export default config({
         }),
         sub: fields.text({
           label: 'Undirtexti',
-          description: 'Línan undir fyrirsögninni („Við svörum fljótt — sími …“).',
+          description: 'Línan undir fyrirsögninni („Við svörum fljótt“). Símanúmerið úr „Fyrirtæki & tengiliðir“ bætist sjálfkrafa aftan við.',
         }),
       },
     }),

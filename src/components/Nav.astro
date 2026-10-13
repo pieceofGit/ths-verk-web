@@ -19,7 +19,7 @@ const linkBase =
   <a href="/" aria-label={SITE_NAME}>
     <img src={logo} alt={SITE_NAME} style="height:48px;display:block" />
   </a>
-  <div class="nav-links" style="display:flex;align-items:center;gap:30px">
+  <div class="nav-links" id="nav-links" style="display:flex;align-items:center;gap:30px">
     {
       nav.map((item) => (
         <a
@@ -38,7 +38,7 @@ const linkBase =
       {ctaLabel}
     </a>
   </div>
-  <button class="nav-burger" data-burger aria-label="Valmynd">
+  <button type="button" class="nav-burger" data-burger aria-label="Valmynd" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
 </nav>

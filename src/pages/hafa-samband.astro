@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { reader, telHref, mapEmbed } from '../lib/content';
+import { reader, telHref, mapEmbed, facebookLabel } from '../lib/content';
 import { eyebrows } from '../data/site';
 
 const contact = await reader.singletons.contact.read();
@@ -10,12 +10,12 @@ if (!contact || !settings) throw new Error('Vantar efni fyrir "Hafa samband"');
 const phone = settings.phone ?? '';
 const email = settings.email ?? '';
 const address = settings.address ?? '';
-const facebook = settings.facebook ?? '#';
+const facebook = settings.facebook ?? '';
 
 const labelStyle =
   "font:600 12px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9aa2ab";
 const inputStyle =
-  "width:100%;background:#15181c;border:1px solid rgba(238,241,244,.14);border-radius:4px;padding:12px 14px;color:#eef1f4;font:400 15px 'IBM Plex Sans',sans-serif;margin-top:6px";
+  "width:100%;background:#15181c;border:1px solid rgba(238,241,244,.14);border-radius:4px;padding:12px 14px;color:#eef1f4;font:400 16px 'IBM Plex Sans',sans-serif;margin-top:6px";
 ---
 
 <Base title="Hafa samband — Fáðu tilboð | Þ.S. Verktakar ehf." showClosingCta={false}>
@@ -29,7 +29,7 @@ const inputStyle =
 
     <div class="qform" style="display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start">
       <!-- FORM -->
-      <div data-reveal style="background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:6px;padding:34px 32px">
+      <form data-quote-form novalidate data-reveal style="background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:6px;padding:34px 32px;min-width:0">
         <div style="font:800 27px 'Archivo',sans-serif">{contact.formTitle}</div>
         <div style="font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin:6px 0 26px">
           {contact.formSub}
@@ -38,49 +38,50 @@ const inputStyle =
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
           <label style="display:block">
             <span style={labelStyle}>Nafn *</span>
-            <input id="q-nafn" type="text" style={inputStyle} />
+            <input id="q-nafn" name="name" type="text" autocomplete="name" required aria-required="true" style={inputStyle} />
           </label>
           <label style="display:block">
             <span style={labelStyle}>Sími</span>
-            <input id="q-simi" type="tel" style={inputStyle} />
+            <input id="q-simi" name="tel" type="tel" autocomplete="tel" inputmode="tel" style={inputStyle} />
           </label>
         </div>
 
         <label style="display:block;margin-top:16px">
           <span style={labelStyle}>Netfang</span>
-          <input id="q-netfang" type="email" style={inputStyle} />
+          <input id="q-netfang" name="email" type="email" autocomplete="email" style={inputStyle} />
         </label>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
           <label style="display:block">
             <span style={labelStyle}>Tegund verks</span>
-            <select id="q-tegund" style={inputStyle}>
+            <select id="q-tegund" name="worktype" style={inputStyle}>
               {contact.workTypes.map((w) => <option>{w}</option>)}
             </select>
           </label>
           <label style="display:block">
             <span style={labelStyle}>Staðsetning</span>
-            <input id="q-stadur" type="text" placeholder="t.d. Egilsstaðir" style={inputStyle} />
+            <input id="q-stadur" name="location" type="text" autocomplete="address-level2" placeholder="t.d. Egilsstaðir" style={inputStyle} />
           </label>
         </div>
 
         <label style="display:block;margin-top:16px">
           <span style={labelStyle}>Lýsing á verki</span>
-          <textarea id="q-lysing" rows="4" style={`${inputStyle};resize:vertical`}></textarea>
+          <textarea id="q-lysing" name="message" rows="4" enterkeyhint="send" style={`${inputStyle};resize:vertical`}></textarea>
         </label>
 
         <button
+          type="submit"
           data-quote-submit
           data-quote-email={email}
           style="margin-top:22px;width:100%;background:#3778c2;color:#fff;border:0;border-radius:4px;padding:16px;font:800 16px 'Archivo',sans-serif;cursor:pointer"
         >
           Senda fyrirspurn →
         </button>
-        <div id="q-status" style="font:600 14px 'IBM Plex Sans',sans-serif;margin-top:14px;min-height:18px"></div>
+        <div id="q-status" role="status" aria-live="polite" style="font:600 14px 'IBM Plex Sans',sans-serif;margin-top:14px;min-height:18px"></div>
         <div style="display:flex;align-items:center;gap:8px;margin-top:6px;font:400 13px 'IBM Plex Sans',sans-serif;color:#7d848d">
           {contact.reassurance}
         </div>
-      </div>
+      </form>
 
       <!-- CONTACT -->
       <div data-reveal style="display:flex;flex-direction:column;gap:16px">
@@ -90,18 +91,28 @@ const inputStyle =
         </a>
         <a href={`mailto:${email}`} style="display:block;background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px;color:#eef1f4">
           <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">NETFANG</div>
-          <div style="font:800 22px 'Archivo',sans-serif;margin-top:6px">{email}</div>
+          <div style="font:800 22px 'Archivo',sans-serif;margin-top:6px;overflow-wrap:anywhere">{email}</div>
         </a>
-        <div style="background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px">
-          <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">HEIMILISFANG</div>
-          <div style="font:800 20px 'Archivo',sans-serif;margin-top:6px">{address}</div>
-          <a href={facebook} target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font:600 15px 'IBM Plex Sans',sans-serif">
-            Facebook · /thsverk →
-          </a>
-        </div>
-        <div data-reveal style="height:220px;border-radius:5px;overflow:hidden;border:1px solid rgba(238,241,244,.12)">
-          <iframe title="Kort" src={mapEmbed(address)} style="width:100%;height:100%;border:0;filter:grayscale(.3)"></iframe>
-        </div>
+        {(address || facebook) && (
+          <div style="background:#1b1f24;border:1px solid rgba(238,241,244,.12);border-radius:5px;padding:22px 24px">
+            {address && (
+              <>
+                <div style="font:700 12px 'Space Mono',monospace;color:#3778c2;letter-spacing:.16em">HEIMILISFANG</div>
+                <div style="font:800 20px 'Archivo',sans-serif;margin-top:6px;overflow-wrap:anywhere">{address}</div>
+              </>
+            )}
+            {facebook && (
+              <a href={facebook} target="_blank" rel="noopener" style={`display:inline-block;${address ? 'margin-top:12px;' : ''}font:600 15px 'IBM Plex Sans',sans-serif`}>
+                {facebookLabel(facebook)}
+              </a>
+            )}
+          </div>
+        )}
+        {address && (
+          <div data-reveal style="height:220px;border-radius:5px;overflow:hidden;border:1px solid rgba(238,241,244,.12)">
+            <iframe title="Kort" src={mapEmbed(address)} style="width:100%;height:100%;border:0;filter:grayscale(.3)"></iframe>
+          </div>
+        )}
       </div>
     </div>
   </div>

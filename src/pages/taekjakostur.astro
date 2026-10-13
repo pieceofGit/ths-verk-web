@@ -6,8 +6,25 @@ import { eyebrows, equipmentTabs } from '../data/site';
 const equipment = await reader.singletons.equipment.read();
 if (!equipment) throw new Error('Vantar efni fyrir "Tækjakostur" (src/content/equipment)');
 
-const placeholderTile =
-  "height:220px;background:#20242a;display:flex;align-items:center;justify-content:center;font:700 12px 'Space Mono',monospace;color:#565d66;letter-spacing:.1em;background-image:repeating-linear-gradient(45deg,rgba(55,120,194,.08) 0 2px,transparent 2px 20px)";
+type Machine = {
+  image: string | null;
+  title: string;
+  sub: string;
+  stats?: readonly { value: string; label: string }[];
+};
+
+// Gröfur and Önnur tæki are small cards in 3 columns; trucks and haulers are wider, in 2.
+const layout: Record<string, { cols: number; imgH: number }> = {
+  grofur: { cols: 3, imgH: 220 },
+  vorubilar: { cols: 2, imgH: 280 },
+  bukollur: { cols: 2, imgH: 280 },
+  onnur: { cols: 3, imgH: 220 },
+};
+
+// Tabs with no machines are left out.
+const tabs = equipmentTabs
+  .map((t) => ({ ...t, items: (equipment[t.key as keyof typeof equipment] ?? []) as readonly Machine[] }))
+  .filter((t) => t.items.length > 0);
 ---
 
 <Base title="Tækjakostur — Þ.S. Verktakar ehf.">
@@ -20,12 +37,17 @@ const placeholderTile =
     </h1>
 
     <!-- tab bar -->
-    <div data-reveal style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px">
+    <div data-reveal role="tablist" aria-label="Tegund tækja" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px">
       {
-        equipmentTabs.map((t) => (
+        tabs.map((t, i) => (
           <button
+            type="button"
+            role="tab"
+            id={`tab-${t.key}`}
+            aria-controls={`panel-${t.key}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
             data-taeki={t.key}
-            style="font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;border:1px solid rgba(238,241,244,.2);background:transparent;color:#eef1f4;border-radius:3px;cursor:pointer"
+            style="font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:14px 22px;color:#eef1f4;border-radius:3px;cursor:pointer"
           >
             {t.label}
           </button>
@@ -33,122 +55,50 @@ const placeholderTile =
       }
     </div>
 
-    <!-- GRÖFUR -->
-    <div data-taeki-panel="grofur">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-        {
-          equipment.grofur.map((g) => (
-            <div
-              class="fleet-card"
-              data-reveal
-              style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden"
-            >
-              {g.image ? (
-                <div style={`height:220px;background:url('${resolveImg(g.image)}') center/cover no-repeat`} />
-              ) : (
-                <div style={placeholderTile}>[ mynd væntanleg ]</div>
-              )}
-              <div style="padding:22px">
-                <div style="font:800 22px 'Archivo',sans-serif">{g.title}</div>
-                {g.sub && (
-                  <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{g.sub}</div>
-                )}
-                {g.stats && g.stats.length > 0 && (
-                  <div style="display:flex;gap:24px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(238,241,244,.1)">
-                    {g.stats.map((st) => (
-                      <div>
-                        <div style="font:800 20px 'Archivo',sans-serif;color:#6fa0dc">{st.value}</div>
-                        <div style="font:400 12px 'IBM Plex Sans',sans-serif;color:#7d848d">{st.label}</div>
+    {
+      tabs.map((t, i) => {
+        const { cols, imgH } = layout[t.key] ?? { cols: 3, imgH: 220 };
+        const pad = cols === 2 ? 24 : 22;
+        return (
+          <div
+            data-taeki-panel={t.key}
+            role="tabpanel"
+            id={`panel-${t.key}`}
+            aria-labelledby={`tab-${t.key}`}
+            hidden={i !== 0}
+          >
+            <div style={`display:grid;grid-template-columns:repeat(${cols},minmax(0,1fr));gap:20px`}>
+              {t.items.map((m) => (
+                <div class="fleet-card" data-reveal>
+                  {m.image ? (
+                    <div style={`height:${imgH}px;background:url('${resolveImg(m.image)}') center/cover no-repeat`} />
+                  ) : (
+                    <div class="img-placeholder" style={`height:${imgH}px`}>
+                      [ mynd væntanleg ]
+                    </div>
+                  )}
+                  <div style={`padding:${pad}px`}>
+                    <div style={`font:800 ${cols === 2 ? 24 : 22}px 'Archivo',sans-serif;overflow-wrap:anywhere`}>{m.title}</div>
+                    {m.sub && (
+                      <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{m.sub}</div>
+                    )}
+                    {m.stats && m.stats.length > 0 && (
+                      <div style="display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(238,241,244,.1)">
+                        {m.stats.map((st) => (
+                          <div>
+                            <div style="font:800 20px 'Archivo',sans-serif;color:#6fa0dc;white-space:nowrap">{st.value}</div>
+                            <div style="font:400 12px 'IBM Plex Sans',sans-serif;color:#7d848d">{st.label}</div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
-                )}
-              </div>
+                </div>
+              ))}
             </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- VÖRUBÍLAR -->
-    <div data-taeki-panel="vorubilar" style="display:none">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
-        {
-          equipment.vorubilar.map((v) => (
-            <div
-              class="fleet-card"
-              data-reveal
-              style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden"
-            >
-              {v.image ? (
-                <div style={`height:280px;background:url('${resolveImg(v.image)}') center/cover no-repeat`} />
-              ) : (
-                <div style={`${placeholderTile};height:280px`}>[ mynd væntanleg ]</div>
-              )}
-              <div style="padding:24px">
-                <div style="font:800 24px 'Archivo',sans-serif">{v.title}</div>
-                {v.sub && (
-                  <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{v.sub}</div>
-                )}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- BÚKOLLUR -->
-    <div data-taeki-panel="bukollur" style="display:none">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
-        {
-          equipment.bukollur.map((b) => (
-            <div
-              class="fleet-card"
-              data-reveal
-              style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden"
-            >
-              {b.image ? (
-                <div style={`height:280px;background:url('${resolveImg(b.image)}') center/cover no-repeat`} />
-              ) : (
-                <div style={`${placeholderTile};height:280px`}>[ mynd væntanleg ]</div>
-              )}
-              <div style="padding:24px">
-                <div style="font:800 24px 'Archivo',sans-serif">{b.title}</div>
-                {b.sub && (
-                  <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:4px">{b.sub}</div>
-                )}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- ÖNNUR TÆKI -->
-    <div data-taeki-panel="onnur" style="display:none">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-        {
-          equipment.onnur.map((o) => (
-            <div
-              class="fleet-card"
-              data-reveal
-              style="border:1px solid rgba(238,241,244,.12);border-radius:5px;overflow:hidden"
-            >
-              {o.image ? (
-                <div style={`height:220px;background:url('${resolveImg(o.image)}') center/cover no-repeat`} />
-              ) : (
-                <div style={placeholderTile}>[ mynd væntanleg ]</div>
-              )}
-              <div style="padding:22px">
-                <div style="font:800 22px 'Archivo',sans-serif">{o.title}</div>
-                {o.sub && (
-                  <div style="font:400 15px 'IBM Plex Sans',sans-serif;color:#9aa2ab;margin-top:6px">{o.sub}</div>
-                )}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+          </div>
+        );
+      })
+    }
   </div>
 </Base>
