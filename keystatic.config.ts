@@ -298,6 +298,17 @@ export default config({
             itemLabel: (p) => p.fields.title.value || 'Tæki',
           }
         ),
+        aukabunadur: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Heiti' }),
+            detail: fields.text({ label: 'Nánar (t.d. „2 stk“, „4.100 kg · 2016“; má vera tómt)' }),
+          }),
+          {
+            label: 'Flipi: Aukabúnaður',
+            description: 'Smærri tæki og búnaður, sýnd sem listi án mynda á „Aukabúnaður“ flipanum.',
+            itemLabel: (p) => p.fields.title.value || 'Búnaður',
+          }
+        ),
       },
     }),
 

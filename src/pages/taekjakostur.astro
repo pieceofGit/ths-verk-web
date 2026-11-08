@@ -12,6 +12,7 @@ type Machine = {
   sub: string;
   stats?: readonly { value: string; label: string }[];
 };
+type Accessory = { title: string; detail: string };
 
 // Gröfur and Önnur tæki are small cards in 3 columns; trucks and haulers are wider, in 2.
 const layout: Record<string, { cols: number; imgH: number }> = {
@@ -23,7 +24,7 @@ const layout: Record<string, { cols: number; imgH: number }> = {
 
 // Tabs with no machines are left out.
 const tabs = equipmentTabs
-  .map((t) => ({ ...t, items: (equipment[t.key as keyof typeof equipment] ?? []) as readonly Machine[] }))
+  .map((t) => ({ ...t, items: (equipment[t.key as keyof typeof equipment] ?? []) as readonly (Machine | Accessory)[] }))
   .filter((t) => t.items.length > 0);
 ---
 
@@ -67,8 +68,18 @@ const tabs = equipmentTabs
             aria-labelledby={`tab-${t.key}`}
             hidden={i !== 0}
           >
+            {t.key === 'aukabunadur' ? (
+              <ul class="accessory-list">
+                {(t.items as readonly Accessory[]).map((a) => (
+                  <li>
+                    <span class="accessory-title">{a.title}</span>
+                    {a.detail && <span class="accessory-detail">{a.detail}</span>}
+                  </li>
+                ))}
+              </ul>
+            ) : (
             <div style={`display:grid;grid-template-columns:repeat(${cols},minmax(0,1fr));gap:20px`}>
-              {t.items.map((m) => (
+              {(t.items as readonly Machine[]).map((m) => (
                 <div class="fleet-card" data-reveal>
                   {m.image ? (
                     <div style={`height:${imgH}px;background:url('${resolveImg(m.image)}') center/cover no-repeat`} />
@@ -96,6 +107,7 @@ const tabs = equipmentTabs
                 </div>
               ))}
             </div>
+            )}
           </div>
         );
       })

@@ -41,4 +41,5 @@ export const equipmentTabs = [
   { key: 'vorubilar', label: 'Vörubílar' },
   { key: 'bukollur', label: 'Búkollur' },
   { key: 'onnur', label: 'Önnur tæki' },
+  { key: 'aukabunadur', label: 'Aukabúnaður' },
 ];
