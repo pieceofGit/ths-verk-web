@@ -9,7 +9,6 @@ export const SITE_DESCRIPTION =
   'Þ.S. Verktakar ehf. — jarðvinna, flutningar og hífingar á Austurlandi síðan 1978.';
 
 export const nav = [
-  { label: 'Forsíða', href: '/' },
   { label: 'Um okkur', href: '/um-okkur' },
   { label: 'Saga', href: '/saga' },
   { label: 'Verkefni', href: '/verkefni' },
