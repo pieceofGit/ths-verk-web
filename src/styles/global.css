@@ -102,6 +102,13 @@ button:active, .nav-cta:active, .cta-btn:active, .mobile-cta a:active { transfor
 .nav-burger[data-open] span:nth-child(2) { opacity: 0; }
 .nav-burger[data-open] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+.machine-icon {
+  background: var(--tile);
+  display: flex; align-items: center; justify-content: center;
+  color: #4d6f97;
+}
+.machine-icon svg { width: min(58%, 220px); height: auto; }
+
 /* Equipment fleet card hover */
 .fleet-card {
   border: 1px solid rgba(238,241,244,.12); border-radius: 5px; overflow: hidden;

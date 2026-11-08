@@ -1,0 +1,138 @@
+---
+import type { MachineKind } from '../data/machineKinds';
+
+interface Props {
+  kind?: string | null;
+  height: number;
+}
+
+const { kind, height } = Astro.props;
+
+const cab = 'M20 74 V38 Q20 30 28 30 H50 L58 46 V74 Z M26 36 H48 L52 46 H26 Z';
+const wheel = (cx: number, r = 11, cy = 78) => `M${cx - r} ${cy} a${r} ${r} 0 1 0 ${r * 2} 0 a${r} ${r} 0 1 0 ${-r * 2} 0`;
+
+const shapes: Record<MachineKind, string[]> = {
+  grafa: [
+    'M22 70 H100 a8 8 0 0 1 0 16 H22 a8 8 0 0 1 0 -16 Z',
+    'M30 46 H92 V70 H30 Z',
+    'M34 24 H58 V46 H34 Z',
+    'M88 50 L118 18 L140 46',
+    'M140 46 L148 64 L128 62 Z',
+  ],
+  hjolaskofla: [
+    'M66 44 H130 V68 H66 Z',
+    'M82 18 H110 V44 H82 Z',
+    'M66 52 L40 58',
+    'M18 48 L40 50 L38 72 L16 72 Z',
+    wheel(80, 14, 74),
+    wheel(118, 14, 74),
+  ],
+  jardyta: [
+    'M42 66 H130 a9 9 0 0 1 0 18 H42 a9 9 0 0 1 0 -18 Z',
+    'M50 42 H126 V66 H50 Z',
+    'M88 18 H118 V42 H88 Z',
+    'M18 34 Q30 58 18 84 H28 Q38 58 28 34 Z',
+    'M28 60 H50',
+  ],
+  veghefill: [
+    'M30 66 L44 42 H140 V64',
+    'M102 18 H132 V42 H102 Z',
+    'M60 80 L90 70',
+    wheel(30, 10, 78),
+    wheel(112, 12, 76),
+    wheel(138, 12, 76),
+  ],
+  valtari: [
+    'M20 66 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0',
+    'M42 44 H70',
+    'M66 42 H126 V68 H66 Z',
+    'M80 16 H108 V42 H80 Z',
+    wheel(112, 14, 74),
+  ],
+  drattarbill: [cab, 'M58 68 H136 V74 H58', 'M96 60 H120 V68 H96 Z', wheel(38), wheel(100), wheel(122)],
+  vorubill: [cab, 'M58 70 H140', 'M64 32 H142 V66 H68 Z', wheel(38), wheel(100), wheel(124)],
+  kranabill: [
+    cab,
+    'M58 68 H140 V74 H58',
+    'M66 68 V38',
+    'M66 40 L136 18',
+    'M136 18 V40 M130 40 Q136 48 142 40',
+    wheel(38),
+    wheel(104),
+    wheel(126),
+  ],
+  tankbill: [cab, 'M58 70 H140', 'M64 34 H124 a16 16 0 0 1 0 32 H80 a16 16 0 0 1 -16 -16 Z', wheel(38), wheel(104), wheel(126)],
+  bukolla: [
+    'M20 66 V36 H46 V50 H62 V66 Z',
+    'M24 40 H42 V50 H24 Z',
+    'M70 28 H148 L138 62 H76 Z',
+    wheel(36, 14, 74),
+    wheel(98, 14, 74),
+    wheel(130, 14, 74),
+  ],
+  vagn: [
+    'M12 44 H60 V58 H148 V66 H12 Z',
+    'M24 66 V78',
+    wheel(104, 10, 78),
+    wheel(128, 10, 78),
+  ],
+  sendibill: [
+    'M18 74 V50 L36 26 H142 V74 Z',
+    'M40 32 H62 V50 H26 Z',
+    'M70 32 H96 V50 H70 Z',
+    wheel(44, 11, 76),
+    wheel(118, 11, 76),
+  ],
+  pallbill: [
+    'M16 74 V54 L30 50 L46 30 H84 V52 H144 V74 Z',
+    'M50 36 H78 V50 H38 Z',
+    wheel(42, 11, 76),
+    wheel(120, 11, 76),
+  ],
+  fjorhjol: [
+    'M30 52 H130',
+    'M44 52 L52 36 H62',
+    'M70 52 V44 H106 V52',
+    'M24 46 H48 M112 46 H138',
+    wheel(42, 16, 70),
+    wheel(118, 16, 70),
+  ],
+  snjosledi: [
+    'M12 82 H64 Q72 82 72 74',
+    'M58 70 H146 V80 H58 Z',
+    'M36 66 L62 46 H120 L140 66 Z',
+    'M62 46 L72 28 L84 46',
+    'M92 46 V38 H120 V46',
+  ],
+  drattarvel: [
+    'M24 50 H88 V68 H24 Z',
+    'M88 16 H126 V50 H88 Z',
+    'M40 50 V40',
+    wheel(42, 14, 74),
+    wheel(110, 22, 64),
+  ],
+  lyftari: [
+    'M28 50 H128 V68 H28 Z',
+    'M40 24 H66 V50 H40 Z',
+    'M120 50 L32 14',
+    'M32 14 V32 H14',
+    wheel(50, 14, 74),
+    wheel(108, 14, 74),
+  ],
+  almennt: [
+    'M40 42 H120 V82 H40 Z',
+    'M66 42 V30 H94 V42',
+    'M40 58 H120',
+    'M76 54 H84 V62 H76 Z',
+  ],
+};
+
+const paths = shapes[(kind ?? 'almennt') as MachineKind] ?? shapes.almennt;
+---
+
+<div class="machine-icon" style={`height:${height}px`} aria-hidden="true">
+  <svg viewBox="0 0 160 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 90 H154" stroke-width="2" opacity=".4" />
+    {paths.map((d) => <path d={d} />)}
+  </svg>
+</div>

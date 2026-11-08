@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro';
 import { reader, resolveImg } from '../lib/content';
 import { eyebrows, equipmentTabs } from '../data/site';
+import MachineIcon from '../components/MachineIcon.astro';
 
 const equipment = await reader.singletons.equipment.read();
 if (!equipment) throw new Error('Vantar efni fyrir "Tækjakostur" (src/content/equipment)');
 
 type Machine = {
   image: string | null;
+  kind?: string | null;
   title: string;
   sub: string;
   stats?: readonly { value: string; label: string }[];
@@ -84,9 +86,7 @@ const tabs = equipmentTabs
                   {m.image ? (
                     <div style={`height:${imgH}px;background:url('${resolveImg(m.image)}') center/cover no-repeat`} />
                   ) : (
-                    <div class="img-placeholder" style={`height:${imgH}px`}>
-                      [ mynd væntanleg ]
-                    </div>
+                    <MachineIcon kind={m.kind} height={imgH} />
                   )}
                   <div style={`padding:${pad}px`}>
                     <div style={`font:800 ${cols === 2 ? 24 : 22}px 'Archivo',sans-serif;overflow-wrap:anywhere`}>{m.title}</div>

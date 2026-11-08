@@ -2,6 +2,7 @@
   "grofur": [
     {
       "image": "taeki-jcb-8020.jpg",
+      "kind": "grafa",
       "title": "JCB 8020",
       "sub": "Smágrafa m/skekkjanlegri skóflu",
       "stats": [
@@ -17,6 +18,7 @@
     },
     {
       "image": null,
+      "kind": "grafa",
       "title": "SANY SY50U",
       "sub": "Smágrafa m/skekkjanlegri skóflu",
       "stats": [
@@ -32,6 +34,7 @@
     },
     {
       "image": "taeki-jcb-90z-1.jpg",
+      "kind": "grafa",
       "title": "JCB 90Z-1",
       "sub": "Beltagrafa m/rótortilti",
       "stats": [
@@ -47,6 +50,7 @@
     },
     {
       "image": "taeki-cat-m-313.jpg",
+      "kind": "grafa",
       "title": "CAT M 313",
       "sub": "Hjólagrafa m/rótortilti",
       "stats": [
@@ -62,6 +66,7 @@
     },
     {
       "image": "taeki-jcb-4cx-cm-aec.jpg",
+      "kind": "grafa",
       "title": "JCB 4CX CM AEC",
       "sub": "Traktorsgrafa m/snjóskóflu á breiðum dekkjum",
       "stats": [
@@ -77,6 +82,7 @@
     },
     {
       "image": "taeki-komatsu-pc-240-lc-11-v2.jpg",
+      "kind": "grafa",
       "title": "Komatsu PC 240 LC-11",
       "sub": "Beltagrafa m/GPS tæki og rótortilti",
       "stats": [
@@ -92,6 +98,7 @@
     },
     {
       "image": "taeki-komatsu-pc-240-lc-11.jpg",
+      "kind": "grafa",
       "title": "Komatsu PC 240 LC-11",
       "sub": "Beltagrafa m/GPS tæki, rótortilti og þjöppu",
       "stats": [
@@ -107,6 +114,7 @@
     },
     {
       "image": "taeki-cat-323-el.jpg",
+      "kind": "grafa",
       "title": "CAT 323",
       "sub": "Beltagrafa m/GPS tæki og rótortilti",
       "stats": [
@@ -122,6 +130,7 @@
     },
     {
       "image": "taeki-cat-336-fl.jpg",
+      "kind": "grafa",
       "title": "CAT 336F L",
       "sub": "Beltagrafa m/GPS tæki",
       "stats": [
@@ -137,6 +146,7 @@
     },
     {
       "image": null,
+      "kind": "grafa",
       "title": "Komatsu HB215 LC-2",
       "sub": "Beltagrafa m/90 cm beltum",
       "stats": [
@@ -152,6 +162,7 @@
     },
     {
       "image": null,
+      "kind": "grafa",
       "title": "Komatsu PC210LC-11",
       "sub": "Beltagrafa m/90 cm beltum og rótortilti",
       "stats": [
@@ -167,6 +178,7 @@
     },
     {
       "image": null,
+      "kind": "grafa",
       "title": "CAT 326",
       "sub": "Beltagrafa m/GPS tæki",
       "stats": [
@@ -182,6 +194,7 @@
     },
     {
       "image": null,
+      "kind": "grafa",
       "title": "CAT 340",
       "sub": "Beltagrafa m/GPS tæki",
       "stats": [
@@ -197,6 +210,7 @@
     },
     {
       "image": "taeki-volvo-l150e.jpg",
+      "kind": "hjolaskofla",
       "title": "Volvo L150",
       "sub": "Hjólaskófla m/snjóskóflu",
       "stats": [
@@ -212,6 +226,7 @@
     },
     {
       "image": "taeki-volvo-hjolaskofla-l50h.jpg",
+      "kind": "hjolaskofla",
       "title": "Volvo L50",
       "sub": "Hjólaskófla m/snjóskóflu",
       "stats": [
@@ -227,6 +242,7 @@
     },
     {
       "image": "taeki-komatsu-wa320-pz-6.jpg",
+      "kind": "hjolaskofla",
       "title": "Komatsu WA320 PZ 6",
       "sub": "Hjólaskófla m/snjóskóflu og fjölplóg",
       "stats": [
@@ -244,106 +260,127 @@
   "vorubilar": [
     {
       "image": "taeki-drattarbill-mercedes-benz-actros.jpg",
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Mercedes Benz Arocs",
       "sub": "6x6 m/snjómokstursbúnaði og millitönn. Árgerð 2020"
     },
     {
       "image": "taeki-drattarbill-man-tgs.jpg",
+      "kind": "drattarbill",
       "title": "Dráttarbíll - MAN TGS",
       "sub": "6x6 m/snjómokstursbúnaði og millitönn. Árgerð 2018"
     },
     {
       "image": null,
+      "kind": "drattarbill",
       "title": "Dráttarbíll - MAN TGS",
       "sub": "6x6 m/snjómokstursbúnaði. Árgerð 2023"
     },
     {
       "image": "taeki-drattarbill-man-82s-2.jpg",
+      "kind": "drattarbill",
       "title": "Dráttarbíll - MAN 82S",
       "sub": "6x6 m/snjómokstursbúnaði og millitönn. Árgerð 2010"
     },
     {
       "image": "taeki-drattarbill-volvo-fmfh.jpg",
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Volvo FMFH",
       "sub": "4 öxla. Árgerð 2012"
     },
     {
       "image": null,
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Scania R-660",
       "sub": "Árgerð 2021"
     },
     {
       "image": null,
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Scania R-660",
       "sub": "Árgerð 2024"
     },
     {
       "image": null,
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Scania R-660",
       "sub": "Árgerð 2025"
     },
     {
       "image": null,
+      "kind": "drattarbill",
       "title": "Dráttarbíll - Volvo FH16 750",
       "sub": "Árgerð 2022"
     },
     {
       "image": "taeki-4-oxla-vorubill-scania-g500.jpg",
+      "kind": "vorubill",
       "title": "4 öxla vörubíll - Scania G500",
       "sub": "Árgerð 2021"
     },
     {
       "image": "taeki-4-oxla-vorubill-scania-g500-2.jpg",
+      "kind": "vorubill",
       "title": "4 öxla vörubíll - Scania G500",
       "sub": "Árgerð 2021"
     },
     {
       "image": "taeki-4-oxla-vorubill-scania-g450b.jpg",
+      "kind": "vorubill",
       "title": "4 öxla vörubíll - Scania G450 B",
       "sub": "Árgerð 2018"
     },
     {
       "image": "taeki-4-oxla-vorubill-scania-g450b-2.jpg",
+      "kind": "vorubill",
       "title": "4 öxla vörubíll - Scania G450 B",
       "sub": "Árgerð 2018"
     },
     {
       "image": "taeki-4-oxla-vorubill-man-tgs-41-480.jpg",
+      "kind": "vorubill",
       "title": "4 öxla vörubíll - MAN TGS 41.480",
       "sub": "8x8 m/millitönn og snjómokstursbúnaði. Árgerð 2008"
     },
     {
       "image": "taeki-velaflutningabill-scania.jpg",
+      "kind": "drattarbill",
       "title": "Vélaflutningabíll - Scania P114",
       "sub": "Árgerð 2000"
     },
     {
       "image": "taeki-kranabill-mercedes-benz-actros.jpg",
+      "kind": "kranabill",
       "title": "Kranabíll - Mercedes Benz Actros 8x8",
       "sub": "Krani 80 tm. Árgerð 2006"
     },
     {
       "image": "taeki-kranabill-mercedes-benz-2636-6x6.jpg",
+      "kind": "kranabill",
       "title": "Kranabíll - Mercedes Benz 2636",
       "sub": "Krani 12,5 tm. Árgerð 1991"
     },
     {
       "image": null,
+      "kind": "kranabill",
       "title": "Kranabíll - Scania R560",
       "sub": "Krani 118,8 tm. Árgerð 2025"
     },
     {
       "image": null,
+      "kind": "kranabill",
       "title": "Kranabíll - Mercedes Benz Arocs",
       "sub": "Krani 23,2 tm. Árgerð 2023"
     },
     {
       "image": "taeki-volvo-fh12.jpg",
+      "kind": "tankbill",
       "title": "Tankbíll - Volvo FH12",
       "sub": "M/vatnstank. Árgerð 2001"
     },
     {
       "image": null,
+      "kind": "tankbill",
       "title": "Olíubíll - Scania P113",
       "sub": "Árgerð 1991"
     }
@@ -351,16 +388,19 @@
   "bukollur": [
     {
       "image": "taeki-volvo-a30d.jpg",
+      "kind": "bukolla",
       "title": "Volvo A30D",
       "sub": "Árgerð 2006"
     },
     {
       "image": "taeki-komatsu-hm350-2.jpg",
+      "kind": "bukolla",
       "title": "Komatsu HM350-2",
       "sub": "Árgerð 2007"
     },
     {
       "image": "taeki-komatsu-hm350-2-2.jpg",
+      "kind": "bukolla",
       "title": "Komatsu HM350-2",
       "sub": "Árgerð 2007"
     }
@@ -368,266 +408,319 @@
   "onnur": [
     {
       "image": "taeki-komatzu-d-61-px-15.jpg",
+      "kind": "jardyta",
       "title": "Komatsu D61 PX-15",
       "sub": "Jarðýta m/plóg og 80 cm beltum, 20 t. Árgerð 2005"
     },
     {
       "image": null,
+      "kind": "jardyta",
       "title": "Komatsu D71PXi-24",
       "sub": "Jarðýta m/GPS og ripper, 26,5 t. Árgerð 2023"
     },
     {
       "image": null,
+      "kind": "jardyta",
       "title": "I.H. jarðýta",
       "sub": "Fyrsta vélin. Árgerð 1978"
     },
     {
       "image": "taeki-cat-160m3-veghefill.jpg",
+      "kind": "veghefill",
       "title": "CAT 160M veghefill",
       "sub": "M/GPS tæki, ripper, framtönn, snjóplóg og framdrifi, 21,2 t. Árgerð 2019"
     },
     {
       "image": "taeki-leeboy-635b.jpg",
+      "kind": "veghefill",
       "title": "Leeboy 635B veghefill",
       "sub": "M/Topcon slope kerfi og leysiskynjara, 4 t. Árgerð 2013"
     },
     {
       "image": "taeki-bomaq-bw-213-dh.jpg",
+      "kind": "valtari",
       "title": "Bomag BW 213 DH",
       "sub": "Valtari m/mæli, 13 t. Árgerð 2016"
     },
     {
       "image": "taeki-amman-av26-2.jpg",
+      "kind": "valtari",
       "title": "Ammann AV26",
       "sub": "Valtari, 2,6 t. Árgerð 2007"
     },
     {
       "image": null,
+      "kind": "lyftari",
       "title": "Manitou MT1440 HA",
       "sub": "Skotbómulyftari m/göfflum, skóflu og mannkörfu, 12 t. Árgerð 2021"
     },
     {
       "image": "taeki-avant-bobcat-a-300.jpg",
+      "kind": "lyftari",
       "title": "Avant A300",
       "sub": "M/göfflum, snjóskóflu og skóflu. Árgerð 2008"
     },
     {
       "image": "taeki-ausa-d-120-ahg.jpg",
+      "kind": "bukolla",
       "title": "Ausa D 120 AHG",
       "sub": "Árgerð 2008"
     },
     {
       "image": "taeki-fintec-f542.jpg",
+      "kind": "almennt",
       "title": "Fintec F542",
       "sub": "Hörpunarsamstæða. Árgerð 2007"
     },
     {
       "image": null,
+      "kind": "drattarvel",
       "title": "New Holland T6 165AC",
       "sub": "Dráttarvél m/vagni. Árgerð 2021"
     },
     {
       "image": "taeki-k-ssbohrer-lowbed.jpg",
+      "kind": "vagn",
       "title": "Kässbohrer lowbed",
       "sub": "8 öxla vélavagn. Árgerð 2016"
     },
     {
       "image": "taeki-vss-velavagn.jpg",
+      "kind": "vagn",
       "title": "VSS vélavagn",
       "sub": "5 öxla vélavagn m/2ja öxla dollý. Árgerð 2004"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Etnyre RTN60",
       "sub": "4 öxla vélavagn m/2ja öxla dollý. Árgerð 2008"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Choice 355LB",
       "sub": "3 öxla vélavagn. Árgerð 2007"
     },
     {
       "image": "taeki-velavagn-langendorf-satu.jpg",
+      "kind": "vagn",
       "title": "Vélavagn - Langendorf Satu",
       "sub": "3 öxla vélavagn. Árgerð 2021"
     },
     {
       "image": "taeki-malarvagnar.jpg",
+      "kind": "vagn",
       "title": "Malarvagn - Langendorf SKS HS 20/28",
       "sub": "Árgerð 2004"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Malarvagn - Langendorf SKS HS 20/28",
       "sub": "Árgerð 2005"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Malarvagn - Langendorf SKS HS 20/28",
       "sub": "Árgerð 2007"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Malarvagn - VSS Flexer",
       "sub": "Árgerð 2001"
     },
     {
       "image": "taeki-gamagrind-ozgul.jpg",
+      "kind": "vagn",
       "title": "Gámagrind - Ozgul",
       "sub": "Árgerð 2019"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Gámagrind - Ozgul",
       "sub": "Árgerð 2026"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Gámagrind - Chassis King",
       "sub": "Árgerð 2004"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Gámagrind - Chassis King",
       "sub": "Árgerð 2005"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Gámagrind - Fliegl SDS490",
       "sub": "Árgerð 2006"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Gámalyfta - Hammar 160 C",
       "sub": "Árgerð 2021"
     },
     {
       "image": "taeki-flatvagn-langendorf.jpg",
+      "kind": "vagn",
       "title": "Flatvagn - Langendorf",
       "sub": "M/skjólborðum. Árgerð 2018"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Flatvagn - Kromhout",
       "sub": "Lengjanlegur. Árgerð 1999"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Flatvagn - VSS festivagn",
       "sub": "Árgerð 2003"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Flatvagn",
       "sub": "Árgerð 1988"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Flatvagn - Tranders",
       "sub": "Árgerð 1978"
     },
     {
       "image": "taeki-einingavagn-langendorf-sbh.jpg",
+      "kind": "vagn",
       "title": "Einingavagn - Langendorf SBH",
       "sub": "Árgerð 2019"
     },
     {
       "image": "taeki-vatnstankur.jpg",
+      "kind": "vagn",
       "title": "Vatnstankur",
       "sub": "Festivagn, 22.000 l. Árgerð 1976"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Sturtuvagn - Krampe SK 460",
       "sub": "Árgerð 2025"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Steyputunna - Betamix Transmixer",
       "sub": "Árgerð 2024"
     },
     {
       "image": null,
+      "kind": "vagn",
       "title": "Kælivagn - DAPA",
       "sub": "Árgerð 1994"
     },
     {
       "image": "taeki-mercedes-benz-sprinter-4x4.jpg",
+      "kind": "sendibill",
       "title": "Mercedes Benz Sprinter",
       "sub": "Rúta. Árgerð 2017"
     },
     {
       "image": "taeki-mercedes-benz-814da-4wd.jpg",
+      "kind": "sendibill",
       "title": "Mercedes Benz 814DA 4WD",
       "sub": "Vinnuflokkabíll m/krana. Árgerð 1996"
     },
     {
       "image": "taeki-mercedes-benz-711d.jpg",
+      "kind": "sendibill",
       "title": "Mercedes Benz 711D",
       "sub": "Vinnuflokkabíll m/krana. Árgerð 1992"
     },
     {
       "image": null,
+      "kind": "pallbill",
       "title": "Toyota Hilux",
       "sub": "Pallbíll. Árgerð 2026"
     },
     {
       "image": null,
+      "kind": "pallbill",
       "title": "Toyota Hilux Double Cab",
       "sub": "Pallbíll. Árgerð 2017"
     },
     {
       "image": "taeki-toyota-hilux-2.jpg",
+      "kind": "pallbill",
       "title": "Toyota Hilux",
       "sub": "Pallbíll. Árgerð 2015"
     },
     {
       "image": "taeki-toyota-hiace.jpg",
+      "kind": "sendibill",
       "title": "Toyota Hiace",
       "sub": "Sendibíll. Árgerð 2011"
     },
     {
       "image": null,
+      "kind": "sendibill",
       "title": "Toyota Hiace",
       "sub": "Sendibíll. Árgerð 2011"
     },
     {
       "image": null,
+      "kind": "sendibill",
       "title": "Toyota Hiace",
       "sub": "Sendibíll. Árgerð 2008"
     },
     {
       "image": null,
+      "kind": "sendibill",
       "title": "Volkswagen Caddy",
       "sub": "Sendibíll. Árgerð 2016"
     },
     {
       "image": "taeki-can-am-650-sexhjol.jpg",
+      "kind": "fjorhjol",
       "title": "Can-Am Outlander",
       "sub": "Sexhjól. Árgerð 2021"
     },
     {
       "image": null,
+      "kind": "fjorhjol",
       "title": "Can-Am Outlander Max XTP",
       "sub": "Fjórhjól. Árgerð 2023"
     },
     {
       "image": null,
+      "kind": "fjorhjol",
       "title": "Polaris Sportsman",
       "sub": "Sexhjól m/áburðardreifara og tönn. Árgerð 2010"
     },
     {
       "image": null,
+      "kind": "fjorhjol",
       "title": "Segway Villain SX10 X",
       "sub": "Buggybíll. Árgerð 2025"
     },
     {
       "image": null,
+      "kind": "snjosledi",
       "title": "Yamaha RS Venture",
       "sub": "Snjósleði. Árgerð 2020"
     },
     {
       "image": null,
+      "kind": "snjosledi",
       "title": "Ski-doo Summit 800HO",
       "sub": "Snjósleði. Árgerð 2005"
     }

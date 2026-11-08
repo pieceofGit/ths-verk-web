@@ -29,6 +29,6 @@ Vefnum er breytt í gegnum einfalt ritstjórnarkerfi — enginn kóði.
 ## Ábendingar
 - **Myndir:** helst `.jpg` eða `.webp`. Landslags-hlutföll (breiðari en háar)
   virka best fyrir stórar myndir.
-- **Grafa án myndar:** ef mynd á gröfu er skilin eftir tóm birtist "[ mynd af
-  gröfu ]" reitur — settu inn mynd til að skipta honum út.
+- **Tæki án myndar:** ef mynd er skilin eftir tóm birtist teikning af tegundinni
+  (reiturinn „Tegund“: grafa, vörubíll, vagn …). Settu inn mynd til að skipta henni út.
 - Ekkert eyðileggst: hægt er að breyta öllu til baka hvenær sem er.

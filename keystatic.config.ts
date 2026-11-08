@@ -1,4 +1,5 @@
 import { config, fields, singleton } from '@keystatic/core';
+import { machineKinds } from './src/data/machineKinds';
 
 // Storage: local while developing. In production, set PUBLIC_KEYSTATIC_GITHUB_REPO
 // (e.g. "pieceofGit/ths-verk-web") as a Vercel env var and connect the Keystatic
@@ -9,6 +10,13 @@ const githubRepo = (import.meta as any).env?.PUBLIC_KEYSTATIC_GITHUB_REPO as
 
 const image = (label: string, description?: string) =>
   fields.image({ label, description, directory: 'public/uploads', publicPath: '/uploads' });
+
+const machineKind = fields.select({
+  label: 'Tegund',
+  description: 'Ræður teikningunni sem birtist ef engin mynd er.',
+  options: machineKinds.map((k) => ({ label: k.label, value: k.value })),
+  defaultValue: 'almennt',
+});
 
 // Lines of the giant hero title; longer words can't fit on a phone.
 const heroLine = { length: { max: 14 } };
@@ -244,7 +252,8 @@ export default config({
       schema: {
         grofur: fields.array(
           fields.object({
-            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
+            image: image('Mynd', 'EF TÓMT: teikning af tegundinni (sjá „Tegund“) birtist í staðinn.'),
+            kind: machineKind,
             title: fields.text({ label: 'Titill' }),
             sub: fields.text({ label: 'Lýsing', multiline: true }),
             stats: fields.array(
@@ -264,7 +273,8 @@ export default config({
         ),
         vorubilar: fields.array(
           fields.object({
-            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
+            image: image('Mynd', 'EF TÓMT: teikning af tegundinni (sjá „Tegund“) birtist í staðinn.'),
+            kind: machineKind,
             title: fields.text({ label: 'Titill' }),
             sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
@@ -276,7 +286,8 @@ export default config({
         ),
         bukollur: fields.array(
           fields.object({
-            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
+            image: image('Mynd', 'EF TÓMT: teikning af tegundinni (sjá „Tegund“) birtist í staðinn.'),
+            kind: machineKind,
             title: fields.text({ label: 'Titill' }),
             sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
@@ -288,7 +299,8 @@ export default config({
         ),
         onnur: fields.array(
           fields.object({
-            image: image('Mynd', 'EF TÓMT: birtist „[ mynd væntanleg ]“ reitur í staðinn.'),
+            image: image('Mynd', 'EF TÓMT: teikning af tegundinni (sjá „Tegund“) birtist í staðinn.'),
+            kind: machineKind,
             title: fields.text({ label: 'Titill' }),
             sub: fields.text({ label: 'Lýsing (má vera tómt)', multiline: true }),
           }),
